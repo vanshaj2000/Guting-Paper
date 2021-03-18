@@ -681,6 +681,15 @@ int main()
     double csum=0;
     ofstream os;
     os.open("otp.txt");
+    ofstream os2;
+    os2.open("rec.txt");
+    for(int i=0;i<R.size();i++)
+    {
+        os2<<R[i]->x_l<<" "<<R[i]->y_b<<" "<<R[i]->x_l<<" "<<R[i]->y_t<<endl;
+        os2<<R[i]->x_l<<" "<<R[i]->y_b<<" "<<R[i]->x_r<<" "<<R[i]->y_b<<endl;
+        os2<<R[i]->x_r<<" "<<R[i]->y_b<<" "<<R[i]->x_r<<" "<<R[i]->y_t<<endl;
+        os2<<R[i]->x_l<<" "<<R[i]->y_t<<" "<<R[i]->x_r<<" "<<R[i]->y_t<<endl;
+    }
     for(int i=0;i<lsg.size();i++)
     {
         os<<lsg[i]->iobj->bottom<<" "<<lsg[i]->coord<<" "<<lsg[i]->iobj->top<<" "<<lsg[i]->coord<<endl;
@@ -693,5 +702,6 @@ int main()
     }
     cout<<csum;
     os.close();
+    os2.close();
     return 0;
 }
