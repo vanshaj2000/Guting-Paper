@@ -190,9 +190,9 @@ void trans(ctree* node,vector<int> &ptr)
         return;
     if(node->lson==NULL&&node->rson==NULL)
         ptr.push_back(node->r);
-    else if(node->lson!=NULL)
+    if(node->lson!=NULL)
         trans(node->lson,ptr);
-    else
+    if(node->rson!=NULL)
         trans(node->rson,ptr);
 }
 vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S)
@@ -233,7 +233,6 @@ vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S)
         oo->sig=s;
         return {oo};
     }
-    //cout<<s->ms<<endl;
     vector<inter*> itrs=intervals(pp);
     vector<inter*> tt=interSetDifference({h->x_inter},interSection({h->x_inter},itrs));
     for(int i=0;i<tt.size();i++)
@@ -426,7 +425,6 @@ vector<stripe*> concat(vector<stripe*> &SL,vector<stripe*> &SR,vector<int> &P,in
         obj->ms=0;
         S.push_back(obj);
     }
-    //cout<<"Hello"<<endl;
     for(int i=0;i<S.size();i++)
     {
         stripe* s1;
@@ -445,8 +443,6 @@ vector<stripe*> concat(vector<stripe*> &SL,vector<stripe*> &SR,vector<int> &P,in
         for(int j=0;j<s2->x_uni.size();j++)
             S[i]->x_uni.push_back(s2->x_uni[j]);//F
         S[i]->ms=s1->ms+s2->ms;
-        //if(S[i]->ms>0)
-            //cout<<S[i]->ms<<endl;
         if(s1->tr!=NULL&&s2->tr!=NULL)
         {
             ctree* o1=new ctree();
@@ -614,7 +610,6 @@ vector<line_seg*> contour_driver(vector<rect*> &R,vector<stripe*> &S)
     vector<line_seg*> meg;
     for(int i=0;i<R.size();i++)
     {
-        //cout<<"h"<<endl;
         edge* e1=new edge();
         edge* e2=new edge();
         e1->etype=1;
@@ -626,14 +621,11 @@ vector<line_seg*> contour_driver(vector<rect*> &R,vector<stripe*> &S)
         e1->y_inter=0;
         e2->y_inter=0;
         vector<line_seg*> temp=contour_pieces(e1,S);
-        //cout<<"ithe "<<e1->coor<<endl;
         vector<line_seg*> temp2=contour_pieces(e2,S);
-        //cout<<"ithe2 "<<e2->coor<<endl;
         for(int i=0;i<temp.size();i++)
             meg.push_back(temp[i]);
         for(int i=0;i<temp2.size();i++)
             meg.push_back(temp2[i]);
-        //cout<<meg.size()<<endl;
     }
     return meg;
 }
@@ -664,8 +656,6 @@ int main()
     Rectangle_Dac(R,S);
     cout<<measure(S)<<endl;
     vector<line_seg*> lsg=contour_driver(R,S);
-    for(int i=0;i<lsg.size();i++)
-        cout<<lsg[i]->coord<<endl;
-    cout<<lsg.size()<<" "<<"hh"<<endl;
+    cout<<lsg.size();
     return 0;
 }
