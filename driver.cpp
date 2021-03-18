@@ -675,7 +675,10 @@ int main()
     }
     vector<stripe*> S;
     Rectangle_Dac(R,S);
-    cout<<measure(S)<<endl;
+    ofstream msr;
+    msr.open("msr.txt");
+    msr<<measure(S)<<endl;
+    msr.close();
     vector<line_seg*> lsg=contour_driver(R,S);
     vector<line_seg*> lvert=vert_contour(S);
     double csum=0;
@@ -700,7 +703,7 @@ int main()
         os<<lvert[i]->coord<<" "<<lvert[i]->iobj->bottom<<" "<<lvert[i]->coord<<" "<<lvert[i]->iobj->top<<endl;
         csum+=(lvert[i]->iobj->top-lvert[i]->iobj->bottom);
     }
-    cout<<csum;
+    //cout<<csum;
     os.close();
     os2.close();
     return 0;
