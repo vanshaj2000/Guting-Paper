@@ -652,10 +652,10 @@ vector<line_seg*> contour_driver(vector<rect*> &R,vector<stripe*> &S)
 }
 int main()
 {
-    #ifndef ONLINE_JUDGE
+    /*#ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
-    #endif
+    #endif*/
     int n;
     cin>>n;
     vector<rect*> R;
