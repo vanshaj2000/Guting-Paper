@@ -245,6 +245,27 @@ vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S)
     }
     return ans;
 }
+vector<line_seg*> vert_contour(vector<stripe*> &S)
+{
+    vector<line_seg*> ans;
+    for(int i=0;i<S.size();i++)
+    {
+        stripe* s=S[i];
+        if(s->tr!=NULL)
+        {
+            vector<int> pp;
+            trans(s->tr,pp);
+            for(int i=0;i<pp.size();i++)
+            {
+                line_seg* o1=new line_seg();
+                o1->iobj=s->y_i;
+                o1->coord=pp[i];
+                ans.push_back(o1);
+            }
+        }
+    }
+    return ans;
+}
 vector<inter*> interUnion(vector<inter*> v1,vector<inter*> v2)
 {
     vector<inter*> temp=v1;
@@ -656,11 +677,17 @@ int main()
     Rectangle_Dac(R,S);
     cout<<measure(S)<<endl;
     vector<line_seg*> lsg=contour_driver(R,S);
+    vector<line_seg*> lvert=vert_contour(S);
     double csum=0;
     for(int i=0;i<lsg.size();i++)
     {
-        cout<<lsg[i]->coord<<" "<<lsg[i]->iobj->bottom<<" "<<lsg[i]->iobj->top<<endl;
+        //cout<<lsg[i]->coord<<" "<<lsg[i]->iobj->bottom<<" "<<lsg[i]->iobj->top<<endl;
         csum+=(lsg[i]->iobj->top-lsg[i]->iobj->bottom);
+    }
+    for(int i=0;i<lvert.size();i++)
+    {
+        //cout<<lvert[i]->coord<<" "<<lvert[i]->iobj->bottom<<" "<<lvert[i]->iobj->top<<endl;
+        csum+=(lvert[i]->iobj->top-lvert[i]->iobj->bottom);
     }
     cout<<csum;
     return 0;
