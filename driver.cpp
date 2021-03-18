@@ -100,8 +100,16 @@ vector<int> x_proj(vector<point*> Pts)
 }
 vector<inter*> intervals(vector<int> cors)
 {
-    return {};
-}//Conversion function for x_proj
+    vector<inter*> ans;
+    for(int i=0;i<cors.size();i=i+2)
+    {
+        inter* obj=new inter();
+        obj->bottom=cors[i];
+        obj->top=cors[i+1];
+        ans.push_back(obj);
+    }
+    return ans;
+}
 vector<stripe*> stripes(vector<rect*> R,rect* f)
 {
     vector<stripe*> ans;
@@ -176,6 +184,17 @@ vector<pair<int,int>> getdiffIntervals(vector<inter*> ss,int s,int e)
     }
     return ans;
 }
+void trans(ctree* node,vector<int> &ptr)
+{
+    if(node==NULL)
+        return;
+    if(node->lson==NULL&&node->rson==NULL)
+        ptr.push_back(node->r);
+    else if(node->lson!=NULL)
+        trans(node->lson,ptr);
+    else
+        trans(node->rson,ptr);
+}
 vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S)
 {
     vector<line_seg*> ans;
@@ -186,7 +205,10 @@ vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S)
         {
             struct stripe* temp=S[i];
             if(temp->y_i->top==h->coor)
+            {
                 s=temp;
+                break;
+            }
         }
     }
     else
@@ -195,37 +217,32 @@ vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S)
         {
             struct stripe* temp=S[i];
             if(temp->y_i->bottom==h->coor)
+            {
                 s=temp;
+                break;
+            }
         }
     }
-    vector<pair<int,int>> temp=getdiffIntervals(s->x_uni,h->bottom,h->top);
-    vector<inter*> J;
-    int r1=h->bottom;
-    int r2=h->top;
-    for(int i=0;i<temp.size();i++)
+    vector<int> pp;
+    trans(s->tr,pp);
+    if(pp.size()<=1)
     {
-        if(temp[i].first!=r1)
-        {
-            inter* obj=new inter();
-            obj->bottom=r1;
-            obj->top=temp[i].first;
-            J.push_back(obj);
-        }
-        r1=temp[i].second;
+        line_seg* oo=new line_seg();
+        oo->coord=h->coor;
+        oo->iobj=h->x_inter;
+        oo->sig=s;
+        return {oo};
     }
-    if(r1!=r2)
+    //cout<<s->ms<<endl;
+    vector<inter*> itrs=intervals(pp);
+    vector<inter*> tt=interSetDifference({h->x_inter},interSection({h->x_inter},itrs));
+    for(int i=0;i<tt.size();i++)
     {
-        inter* obj=new inter();
-        obj->bottom=r1;
-        obj->top=r2;
-        J.push_back(obj);
-    }
-    for(int i=0;i<J.size();i++)
-    {
-        line_seg* ob=new line_seg();
-        ob->iobj=J[i];
-        ob->coord=h->coor;
-        ans.push_back(ob);
+        line_seg* nl=new line_seg();
+        nl->coord=h->coor;
+        nl->iobj=tt[i];
+        nl->sig=s;
+        ans.push_back(nl);
     }
     return ans;
 }
@@ -375,7 +392,6 @@ vector<stripe*> cop(vector<stripe*> &sp,vector<int> &P,inter* i1)
             {
                 ss[i]->x_uni=sp[j]->x_uni;//D
                 ss[i]->ms=sp[j]->ms;
-                //cout<<ss[i]->ms<<endl;
                 ss[i]->tr=sp[j]->tr;
             }
         }
@@ -393,8 +409,6 @@ void blacken(vector<stripe*> &sp,vector<inter*> &inr)
             {
                 sp[i]->x_uni={sp[i]->x_i};//E
                 sp[i]->ms=sp[i]->x_i->top-sp[i]->x_i->bottom;
-                //if(sp[i]->ms>0)
-                    //cout<<sp[i]->ms<<endl;
                 sp[i]->tr=NULL;
             }
         }
@@ -455,11 +469,9 @@ vector<stripe*> concat(vector<stripe*> &SL,vector<stripe*> &SR,vector<int> &P,in
 }
 void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,vector<int> &P,vector<stripe*> &S)
 {
-    //cout<<"Hello"<<" "<<V.size()<<endl;
     if(V.size()==1)
     {
         edge* v=V[0];
-        //cout<<v->etype<<endl;
         if(v->etype==0)
             L={v->y_inter};
         else
@@ -477,7 +489,6 @@ void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,ve
         }
         for(int i=0;i<S.size();i++)
         {
-            //cout<<S[i]->y_i->bottom<<" "<<S[i]->y_i->top<<endl;
             if(((S[i]->y_i->bottom)==(v->y_inter->bottom))&&((S[i]->y_i->top)==(v->y_inter->top)))
             {
                 if(v->etype==0)
@@ -487,7 +498,6 @@ void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,ve
                     tt->top=x_ext->top;
                     S[i]->x_uni={tt};//B
                     S[i]->ms=(x_ext->top)-(v->coor);
-                    //cout<<S[i]->ms<<endl;
                     ctree* o1=new ctree();
                     lru* o2=new lru();
                     S[i]->tr=o1;
@@ -504,7 +514,6 @@ void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,ve
                     tt->top=v->coor;
                     S[i]->x_uni={tt};//C
                     S[i]->ms=v->coor-x_ext->bottom;
-                    //cout<<S[i]->ms<<endl;
                     ctree* o1=new ctree();
                     lru* o2=new lru();
                     S[i]->tr=o1;
@@ -516,7 +525,6 @@ void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,ve
                 }
             }
         }
-        //cout<<"Hemlo"<<endl;
     }
     else if(V.size()>1)
     {
@@ -546,26 +554,20 @@ void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,ve
         i1->top=x;
         i2->bottom=x;
         i2->top=x_ext->top;
-        //cout<<"bbb"<<endl;
         STRIPES(V1,i1,L1,R1,P1,S1);
-        //cout<<"hemloji"<<" "<<V1.size()<<endl;
         STRIPES(V2,i2,L2,R2,P2,S2);
-        //cout<<"hemlouu"<<" "<<V2.size()<<endl;
         vector<inter*> LR=interSection(L1,R2);
         L=interSetDifference(L1,LR);
         L=interUnion(L,L2);
         R=interSetDifference(R2,LR);
         R=interUnion(R,R1);
-        //cout<<P1.size()<<" "<<P2.size()<<endl;
         vector<int> pp(P1.size()+P2.size()+1);
         auto it=set_union(P1.begin(),P1.end(),P2.begin(),P2.end(),pp.begin());
         int ss=it-pp.begin();
         pp.resize(ss);
         P=pp;
-        //cout<<P.size()<<endl;
         vector<stripe*> SL=cop(S1,P,i1);
         vector<stripe*> SR=cop(S2,P,i2);
-        //cout<<SL.size()<<" "<<SR.size()<<endl;
         vector<inter*> tt1=interSetDifference(R2,LR);
         vector<inter*> tt2=interSetDifference(L1,LR);
         blacken(SL,tt1);
@@ -598,7 +600,6 @@ void Rectangle_Dac(vector<rect*> &R,vector<stripe*> &S)
     inter* itrTemp=new inter();
     itrTemp->bottom=mini;
     itrTemp->top=maxi;
-    //cout<<VRX.size()<<endl;
     STRIPES(VRX,itrTemp,L,Ri,pts,S);
 }
 double measure(vector<stripe*> &S)
@@ -607,6 +608,34 @@ double measure(vector<stripe*> &S)
     for(int i=0;i<S.size();i++)
         ans+=(S[i]->ms)*(S[i]->y_i->top-S[i]->y_i->bottom);
     return ans;
+}
+vector<line_seg*> contour_driver(vector<rect*> &R,vector<stripe*> &S)
+{
+    vector<line_seg*> meg;
+    for(int i=0;i<R.size();i++)
+    {
+        //cout<<"h"<<endl;
+        edge* e1=new edge();
+        edge* e2=new edge();
+        e1->etype=1;
+        e2->etype=3;
+        e1->coor=R[i]->y_t;
+        e2->coor=R[i]->y_b;
+        e1->x_inter=R[i]->x_int;
+        e2->x_inter=R[i]->x_int;
+        e1->y_inter=0;
+        e2->y_inter=0;
+        vector<line_seg*> temp=contour_pieces(e1,S);
+        //cout<<"ithe "<<e1->coor<<endl;
+        vector<line_seg*> temp2=contour_pieces(e2,S);
+        //cout<<"ithe2 "<<e2->coor<<endl;
+        for(int i=0;i<temp.size();i++)
+            meg.push_back(temp[i]);
+        for(int i=0;i<temp2.size();i++)
+            meg.push_back(temp2[i]);
+        //cout<<meg.size()<<endl;
+    }
+    return meg;
 }
 int main()
 {
@@ -633,6 +662,10 @@ int main()
     }
     vector<stripe*> S;
     Rectangle_Dac(R,S);
-    cout<<measure(S);
+    cout<<measure(S)<<endl;
+    vector<line_seg*> lsg=contour_driver(R,S);
+    for(int i=0;i<lsg.size();i++)
+        cout<<lsg[i]->coord<<endl;
+    cout<<lsg.size()<<" "<<"hh"<<endl;
     return 0;
 }

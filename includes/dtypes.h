@@ -12,12 +12,6 @@ public:
     int bottom;
     int top;
 };
-class line_seg: public inter
-{
-public:
-    inter* iobj;
-    int coord;
-};
 class rect: public inter
 {
 public:
@@ -47,7 +41,7 @@ public:
 class ctree
 {
 public:
-    double r;
+    int r;
     lru* side;
     ctree* lson;
     ctree* rson;
@@ -60,6 +54,13 @@ public:
     vector<inter*> x_uni;
     double ms;
     ctree* tr;
+};
+class line_seg: public inter
+{
+public:
+    inter* iobj;
+    int coord;
+    stripe* sig;
 };
 vector<point*> un(vector<rect*> R);
 vector<int> y_set(vector<rect*> R);
