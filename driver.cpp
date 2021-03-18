@@ -679,16 +679,19 @@ int main()
     vector<line_seg*> lsg=contour_driver(R,S);
     vector<line_seg*> lvert=vert_contour(S);
     double csum=0;
+    ofstream os;
+    os.open("otp.txt");
     for(int i=0;i<lsg.size();i++)
     {
-        //cout<<lsg[i]->coord<<" "<<lsg[i]->iobj->bottom<<" "<<lsg[i]->iobj->top<<endl;
+        os<<lsg[i]->iobj->bottom<<" "<<lsg[i]->coord<<" "<<lsg[i]->iobj->top<<" "<<lsg[i]->coord<<endl;
         csum+=(lsg[i]->iobj->top-lsg[i]->iobj->bottom);
     }
     for(int i=0;i<lvert.size();i++)
     {
-        //cout<<lvert[i]->coord<<" "<<lvert[i]->iobj->bottom<<" "<<lvert[i]->iobj->top<<endl;
+        os<<lvert[i]->coord<<" "<<lvert[i]->iobj->bottom<<" "<<lvert[i]->coord<<" "<<lvert[i]->iobj->top<<endl;
         csum+=(lvert[i]->iobj->top-lvert[i]->iobj->bottom);
     }
     cout<<csum;
+    os.close();
     return 0;
 }
