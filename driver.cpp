@@ -656,6 +656,12 @@ int main()
     Rectangle_Dac(R,S);
     cout<<measure(S)<<endl;
     vector<line_seg*> lsg=contour_driver(R,S);
-    cout<<lsg.size();
+    double csum=0;
+    for(int i=0;i<lsg.size();i++)
+    {
+        cout<<lsg[i]->coord<<" "<<lsg[i]->iobj->bottom<<" "<<lsg[i]->iobj->top<<endl;
+        csum+=(lsg[i]->iobj->top-lsg[i]->iobj->bottom);
+    }
+    cout<<csum;
     return 0;
 }
