@@ -1,7 +1,14 @@
 #include "includes/dtypes.h"
 using namespace std;
-int mini=-1000;
-int maxi=1000;
+int mini=-100000;
+int maxi=100000;
+bool ec(edge* e1,edge* e2)
+{
+    if(e1->coor!=e2->coor)
+        return e1->coor<e2->coor;
+    else
+        return e1->etype<e2->etype;
+}
 bool custom(edge* e1,edge* e2)
 {
     return e1->coor<e2->coor;
@@ -504,6 +511,7 @@ void Rectangle_Dac(vector<rect*> &R,vector<stripe*> &S)
     inter* itrTemp=new inter();
     itrTemp->bottom=mini;
     itrTemp->top=maxi;
+    sort(VRX.begin(),VRX.end(),ec);
     STRIPES(VRX,itrTemp,L,Ri,pts,S);
 }
 double measure(vector<stripe*> &S)
@@ -539,10 +547,6 @@ vector<line_seg*> contour_driver(vector<rect*> &R,vector<stripe*> &S)
 }
 int main()
 {
-    /*#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif*/
     int n;
     cin>>n;
     vector<rect*> R;
