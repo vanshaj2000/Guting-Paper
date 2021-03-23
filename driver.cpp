@@ -547,6 +547,10 @@ vector<line_seg*> contour_driver(vector<rect*> &R,vector<stripe*> &S)
 }
 int main()
 {
+    /*#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif*/
     int n;
     cin>>n;
     vector<rect*> R;
@@ -554,6 +558,10 @@ int main()
     {
         rect* obj=new rect();
         cin>>obj->x_l>>obj->x_r>>obj->y_b>>obj->y_t;
+        obj->x_l=min(obj->x_l,obj->x_r);
+        obj->x_r=max(obj->x_l,obj->x_r);
+        obj->y_b=min(obj->y_b,obj->y_t);
+        obj->y_t=max(obj->y_b,obj->y_t);
         inter* obj1=new inter();
         inter* obj2=new inter();
         obj1->bottom=obj->x_l;
