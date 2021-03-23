@@ -6,81 +6,6 @@ bool custom(edge* e1,edge* e2)
 {
     return e1->coor<e2->coor;
 }
-vector<point*> ptUnion(vector<point*> t1,vector<point*> t2)
-{
-    vector<point*> ans=t1;
-    for(int i=0;i<t2.size();i++)
-    {
-        int flag=0;
-        for(int j=0;j<t1.size();j++)
-        {
-            if(t2[i]->x==t1[j]->x&&t2[i]->y==t1[j]->y)
-                flag=1;
-        }
-        if(!flag)
-            ans.push_back(t2[i]);
-    }
-    return ans;
-}
-vector<point*> ptIntersection(vector<point*> t1,vector<point*> t2)
-{
-    vector<point*> ans;
-    for(int i=0;i<t2.size();i++)
-    {
-        int flag=0;
-        for(int j=0;j<t1.size();j++)
-        {
-            if(t2[i]->x==t1[j]->x&&t2[i]->y==t1[j]->y)
-                flag=1;
-        }
-        if(flag)
-            ans.push_back(t2[i]);
-    }
-    return ans;
-}
-vector<int> setCon(set<int> &s)
-{
-    vector<int> res;
-    for(auto it=s.begin();it!=s.end();it++)
-        res.push_back(*it);
-    return res;
-}
-vector<point*> un(vector<rect*> R)
-{
-    set<pair<int,int>> s;
-    for(int i=0;i<R.size();i++)
-    {
-        rect* temp=R[i];
-        inter* x=temp->x_int;
-        inter* y=temp->y_int;
-        vector<int> v1={x->top,x->bottom};
-        vector<int> v2={y->top,y->bottom};
-        for(int a=0;a<2;a++)
-        {
-            for(int b=0;b<2;b++)
-                s.insert({v1[a],v2[b]});
-        }
-    }
-    vector<point*> ans;
-    for(auto it=s.begin();it!=s.end();it++)
-    {
-        point* obj=new point();
-        obj->x=it->first;
-        obj->y=it->second;
-        ans.push_back(obj);
-    }
-    return ans;
-}
-vector<int> y_set(vector<rect*> R)
-{
-    set<int> s;
-    for(int i=0;i<R.size();i++)
-    {
-        s.insert(R[i]->y_int->top);
-        s.insert(R[i]->y_int->bottom);
-    }
-    return setCon(s);
-}
 vector<inter*> partition(vector<int> Y)
 {
     vector<inter*> res;
@@ -94,10 +19,6 @@ vector<inter*> partition(vector<int> Y)
     }
     return res;
 }
-vector<int> x_proj(vector<point*> Pts)
-{
-    return {};
-}
 vector<inter*> intervals(vector<int> cors)
 {
     vector<inter*> ans;
@@ -106,40 +27,6 @@ vector<inter*> intervals(vector<int> cors)
         inter* obj=new inter();
         obj->bottom=cors[i];
         obj->top=cors[i+1];
-        ans.push_back(obj);
-    }
-    return ans;
-}
-vector<stripe*> stripes(vector<rect*> R,rect* f)
-{
-    vector<stripe*> ans;
-    vector<int> temp=y_set(R);
-    vector<int> temp2={f->y_int->top,f->y_int->bottom};
-    vector<int> Y(temp.size()+2,0);
-    auto it=set_union(temp.begin(),temp.end(),temp2.begin(),temp2.end(),Y.begin());
-    int s=it-Y.begin();
-    Y.resize(s);
-    vector<inter*> part=partition(Y);
-    for(int i=0;i<part.size();i++)
-    {
-        stripe* obj=new stripe();
-        obj->x_i=f->x_int;
-        obj->y_i=part[i];
-        vector<point*> tt;
-        vector<int> v1={obj->x_i->bottom,obj->x_i->top};
-        vector<int> v2={obj->y_i->bottom,obj->y_i->top};
-        for(int i=0;i<2;i++)
-        {
-            for(int j=0;j<2;j++)
-            {
-                point* ch=new point();
-                ch->x=v1[i];
-                ch->y=v2[j];
-                tt.push_back(ch);
-            }
-        }
-        vector<point*> we=ptIntersection(tt,un(R));
-        obj->x_uni=intervals(x_proj(we));
         ans.push_back(obj);
     }
     return ans;
