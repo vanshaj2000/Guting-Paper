@@ -1,23 +1,19 @@
 #include "includes/dtypes.h"
 using namespace std;
-int mini=-100000;
-int maxi=100000;
-bool ec(edge* e1,edge* e2)
+int mini=INT_MIN;
+int maxi=INT_MAX;
+bool ec(edge* e1,edge* e2)//Comparator for sorting the vertical edges to handle multiple x coordinates case
 {
     if(e1->coor!=e2->coor)
         return e1->coor<e2->coor;
     else
         return e1->etype<e2->etype;
 }
-bool custom(edge* e1,edge* e2)
-{
-    return e1->coor<e2->coor;
-}
-vector<inter*> partition(vector<int> Y)
+vector<inter*> partition(vector<int> Y)//Function to find the different intervals from an array of coordinates
 {
     vector<inter*> res;
-    sort(Y.begin(),Y.end());
-    for(int i=0;i<Y.size()-1;i++)
+    sort(Y.begin(),Y.end());//Sorting the points
+    for(int i=0;i<Y.size()-1;i++)//Then taking consecutive intervals
     {
         inter* obj=new inter();
         obj->bottom=Y[i];
@@ -26,7 +22,7 @@ vector<inter*> partition(vector<int> Y)
     }
     return res;
 }
-vector<inter*> intervals(vector<int> cors)
+vector<inter*> intervals(vector<int> cors)//Used for getting the suninterval queries where cors are the coordinates of the leaf nodes ofa stripe
 {
     vector<inter*> ans;
     for(int i=0;i<cors.size();i=i+2)
@@ -38,14 +34,14 @@ vector<inter*> intervals(vector<int> cors)
     }
     return ans;
 }
-vector<pair<int,int>> getIntUnion(vector<inter*> ss)
+vector<pair<int,int>> getIntUnion(vector<inter*> ss)//This function finds the array of intervals without overlapping intervals 
 {
     if(ss.size()==0)
         return {};
     vector<pair<int,int>> pr;
     for(int i=0;i<ss.size();i++)
         pr.push_back({ss[i]->bottom,ss[i]->top});
-    sort(pr.begin(),pr.end());
+    sort(pr.begin(),pr.end());//Sorting acc to starting time
     vector<pair<int,int>> res;
     res.push_back(pr[0]);
     for(int i=1;i<pr.size();i++)
@@ -78,39 +74,39 @@ vector<pair<int,int>> getdiffIntervals(vector<inter*> ss,int s,int e)
     }
     return ans;
 }
-void trans(ctree* node,vector<int> &ptr)
+void trans(ctree* node,vector<int> &ptr)//Function to find the leaf nodes and store them in an array of ptr
 {
-    if(node==NULL)
+    if(node==NULL)//If tree is empty, return NULL
         return;
-    if(node->lson==NULL&&node->rson==NULL)
+    if(node->lson==NULL&&node->rson==NULL)//If its a leaf node then push in the array
         ptr.push_back(node->r);
     if(node->lson!=NULL)
         trans(node->lson,ptr);
     if(node->rson!=NULL)
         trans(node->rson,ptr);
 }
-vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S)
+vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S)//This function returns an array of line segments that are the horizontal contour pieces
 {
     vector<line_seg*> ans;
     struct stripe* s;
-    if(h->etype==3)
+    if(h->etype==3)//If the edge is a top edge
     {
         for(int i=0;i<S.size();i++)
         {
             struct stripe* temp=S[i];
-            if(temp->y_i->top==h->coor)
+            if(temp->y_i->top==h->coor)//To get the stripe whose top coincides with the edge
             {
                 s=temp;
                 break;
             }
         }
     }
-    else
+    else//If its a bottom edge
     {
         for(int i=0;i<S.size();i++)
         {
             struct stripe* temp=S[i];
-            if(temp->y_i->bottom==h->coor)
+            if(temp->y_i->bottom==h->coor)//To get the stripe whose top coincides with the edge
             {
                 s=temp;
                 break;
@@ -139,19 +135,19 @@ vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S)
     }
     return ans;
 }
-vector<line_seg*> vert_contour(vector<stripe*> &S)
+vector<line_seg*> vert_contour(vector<stripe*> &S)//This function find the vertical contour pieces
 {
     vector<line_seg*> ans;
-    for(int i=0;i<S.size();i++)
+    for(int i=0;i<S.size();i++)//We go to every stripe and its leaf nodes and from every coordinate in it make a line segment above its immediate stripe
     {
         stripe* s=S[i];
         if(s->tr!=NULL)
         {
             vector<int> pp;
-            trans(s->tr,pp);
+            trans(s->tr,pp);//store the leaf nodes
             for(int i=0;i<pp.size();i++)
             {
-                line_seg* o1=new line_seg();
+                line_seg* o1=new line_seg();//Creation of the line segment
                 o1->iobj=s->y_i;
                 o1->coord=pp[i];
                 ans.push_back(o1);
@@ -160,12 +156,12 @@ vector<line_seg*> vert_contour(vector<stripe*> &S)
     }
     return ans;
 }
-vector<inter*> interUnion(vector<inter*> v1,vector<inter*> v2)
+vector<inter*> interUnion(vector<inter*> v1,vector<inter*> v2)//Finds the union of 2 sets of intervals
 {
     vector<inter*> temp=v1;
     for(int i=0;i<v2.size();i++)
-        temp.push_back(v2[i]);
-    vector<pair<int,int>> res=getIntUnion(temp);
+        temp.push_back(v2[i]);//Push both of them in a single array
+    vector<pair<int,int>> res=getIntUnion(temp);//And call the getIntUnion
     vector<inter*> ans;
     for(int i=0;i<res.size();i++)
     {
@@ -176,7 +172,7 @@ vector<inter*> interUnion(vector<inter*> v1,vector<inter*> v2)
     }
     return ans;
 }
-vector<inter*> interSection(vector<inter*> v1,vector<inter*> v2)
+vector<inter*> interSection(vector<inter*> v1,vector<inter*> v2)//Finds the intersection of 2 sets of intervals
 {
     vector<pair<int,int>> pr1=getIntUnion(v1);
     vector<pair<int,int>> pr2=getIntUnion(v2);
@@ -229,7 +225,7 @@ vector<inter*> interSection(vector<inter*> v1,vector<inter*> v2)
     }
     return ans;
 }
-vector<inter*> interSetDifference(vector<inter*> v1,vector<inter*> v2)
+vector<inter*> interSetDifference(vector<inter*> v1,vector<inter*> v2)//Finds the set fifference of 2 sets of intervals
 {
     vector<pair<int,int>> pr1=getIntUnion(v1);
     vector<pair<int,int>> pr2=getIntUnion(v2);
@@ -287,7 +283,7 @@ vector<inter*> interSetDifference(vector<inter*> v1,vector<inter*> v2)
     }
     return ans;
 }
-vector<stripe*> cop(vector<stripe*> &sp,vector<int> &P,inter* i1)
+vector<stripe*> cop(vector<stripe*> &sp,vector<int> &P,inter* i1)//This is the copy function descibed in the algorithm
 {
     vector<inter*> pp=partition(P);
     vector<stripe*> ss;
@@ -298,7 +294,7 @@ vector<stripe*> cop(vector<stripe*> &sp,vector<int> &P,inter* i1)
         obj->y_i=pp[i];
         ss.push_back(obj);
     }
-    for(int i=0;i<ss.size();i++)
+    for(int i=0;i<ss.size();i++)//Copy an array of original stripes and make a copy array called ss
     {
         for(int j=0;j<sp.size();j++)
         {
@@ -312,7 +308,7 @@ vector<stripe*> cop(vector<stripe*> &sp,vector<int> &P,inter* i1)
     }
     return ss;
 }
-void blacken(vector<stripe*> &sp,vector<inter*> &inr)
+void blacken(vector<stripe*> &sp,vector<inter*> &inr)//This is the blacken function described in the algorithm
 {
     for(int i=0;i<sp.size();i++)
     {
@@ -328,7 +324,7 @@ void blacken(vector<stripe*> &sp,vector<inter*> &inr)
         }
     }
 }
-vector<stripe*> concat(vector<stripe*> &SL,vector<stripe*> &SR,vector<int> &P,inter* itr)
+vector<stripe*> concat(vector<stripe*> &SL,vector<stripe*> &SR,vector<int> &P,inter* itr)//This is the concatenation function described in the paper
 {
     vector<stripe*> S;
     vector<inter*> pp=partition(P);
@@ -358,7 +354,7 @@ vector<stripe*> concat(vector<stripe*> &SL,vector<stripe*> &SR,vector<int> &P,in
         for(int j=0;j<s2->x_uni.size();j++)
             S[i]->x_uni.push_back(s2->x_uni[j]);//F
         S[i]->ms=s1->ms+s2->ms;
-        if(s1->tr!=NULL&&s2->tr!=NULL)
+        if(s1->tr!=NULL&&s2->tr!=NULL)//Tree construction
         {
             ctree* o1=new ctree();
             lru* o2=new lru();
@@ -378,7 +374,7 @@ vector<stripe*> concat(vector<stripe*> &SL,vector<stripe*> &SR,vector<int> &P,in
     }
     return S;
 }
-void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,vector<int> &P,vector<stripe*> &S)
+void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,vector<int> &P,vector<stripe*> &S)//This is the main function to create stripes
 {
     if(V.size()==1)
     {
@@ -439,7 +435,7 @@ void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,ve
     }
     else if(V.size()>1)
     {
-        sort(V.begin(),V.end(),custom);
+        sort(V.begin(),V.end(),ec);
         int s=V.size()/2;
         vector<edge*> V1;
         vector<edge*> V2;
@@ -486,13 +482,13 @@ void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,ve
         S=concat(SL,SR,P,x_ext);
     }
 }
-void Rectangle_Dac(vector<rect*> &R,vector<stripe*> &S)
+void Rectangle_Dac(vector<rect*> &R,vector<stripe*> &S)//This is the main function to call stripes with sending the set of all vertical edges
 {
     vector<edge*> VRX;
     vector<inter*> L;
     vector<inter*> Ri;
     vector<int> pts;
-    for(int i=0;i<R.size();i++)
+    for(int i=0;i<R.size();i++)//Creation of vertical edges from every rectangle
     {
         struct rect* temp=R[i];
         edge* e1=new edge();
@@ -511,17 +507,17 @@ void Rectangle_Dac(vector<rect*> &R,vector<stripe*> &S)
     inter* itrTemp=new inter();
     itrTemp->bottom=mini;
     itrTemp->top=maxi;
-    sort(VRX.begin(),VRX.end(),ec);
-    STRIPES(VRX,itrTemp,L,Ri,pts,S);
+    sort(VRX.begin(),VRX.end(),ec);//Sorting to handle multiple x coordinates case
+    STRIPES(VRX,itrTemp,L,Ri,pts,S);//Calling stripes
 }
-double measure(vector<stripe*> &S)
+double measure(vector<stripe*> &S)//Function to find the measure
 {
     double ans=0;
     for(int i=0;i<S.size();i++)
         ans+=(S[i]->ms)*(S[i]->y_i->top-S[i]->y_i->bottom);
     return ans;
 }
-vector<line_seg*> contour_driver(vector<rect*> &R,vector<stripe*> &S)
+vector<line_seg*> contour_driver(vector<rect*> &R,vector<stripe*> &S)//Driver for finding contour pieces
 {
     vector<line_seg*> meg;
     for(int i=0;i<R.size();i++)
@@ -536,7 +532,7 @@ vector<line_seg*> contour_driver(vector<rect*> &R,vector<stripe*> &S)
         e2->x_inter=R[i]->x_int;
         e1->y_inter=0;
         e2->y_inter=0;
-        vector<line_seg*> temp=contour_pieces(e1,S);
+        vector<line_seg*> temp=contour_pieces(e1,S);//Finding the contour pieces for every horizontal edge
         vector<line_seg*> temp2=contour_pieces(e2,S);
         for(int i=0;i<temp.size();i++)
             meg.push_back(temp[i]);
@@ -547,14 +543,10 @@ vector<line_seg*> contour_driver(vector<rect*> &R,vector<stripe*> &S)
 }
 int main()
 {
-    /*#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif*/
     int n;
     cin>>n;
     vector<rect*> R;
-    for(int i=0;i<n;i++)
+    for(int i=0;i<n;i++)//Input of rectangle coordinates as x_l x_r y_b y_t
     {
         rect* obj=new rect();
         cin>>obj->x_l>>obj->x_r>>obj->y_b>>obj->y_t;
@@ -574,30 +566,30 @@ int main()
     }
     vector<stripe*> S;
     Rectangle_Dac(R,S);
-    ofstream msr;
+    ofstream msr;//Oftreams for visualisations through python
     msr.open("msr.txt");
     msr<<measure(S)<<endl;
     msr.close();
-    vector<line_seg*> lsg=contour_driver(R,S);
-    vector<line_seg*> lvert=vert_contour(S);
+    vector<line_seg*> lsg=contour_driver(R,S);//Finding horizontal contours
+    vector<line_seg*> lvert=vert_contour(S);//Finding vertical contours
     double csum=0;
-    ofstream os;
+    ofstream os;//Oftreams for visualisations through python
     os.open("otp.txt");
-    ofstream os2;
+    ofstream os2;//Oftreams for visualisations through python
     os2.open("rec.txt");
-    for(int i=0;i<R.size();i++)
+    for(int i=0;i<R.size();i++)//Writing rectangle coordinates
     {
         os2<<R[i]->x_l<<" "<<R[i]->y_b<<" "<<R[i]->x_l<<" "<<R[i]->y_t<<endl;
         os2<<R[i]->x_l<<" "<<R[i]->y_b<<" "<<R[i]->x_r<<" "<<R[i]->y_b<<endl;
         os2<<R[i]->x_r<<" "<<R[i]->y_b<<" "<<R[i]->x_r<<" "<<R[i]->y_t<<endl;
         os2<<R[i]->x_l<<" "<<R[i]->y_t<<" "<<R[i]->x_r<<" "<<R[i]->y_t<<endl;
     }
-    for(int i=0;i<lsg.size();i++)
+    for(int i=0;i<lsg.size();i++)//Writing horizontal contour pieces coordinates
     {
         os<<lsg[i]->iobj->bottom<<" "<<lsg[i]->coord<<" "<<lsg[i]->iobj->top<<" "<<lsg[i]->coord<<endl;
         csum+=(lsg[i]->iobj->top-lsg[i]->iobj->bottom);
     }
-    for(int i=0;i<lvert.size();i++)
+    for(int i=0;i<lvert.size();i++)//Writing vertical contour pieces coordinates
     {
         os<<lvert[i]->coord<<" "<<lvert[i]->iobj->bottom<<" "<<lvert[i]->coord<<" "<<lvert[i]->iobj->top<<endl;
         csum+=(lvert[i]->iobj->top-lvert[i]->iobj->bottom);
