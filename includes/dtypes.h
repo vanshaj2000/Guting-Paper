@@ -62,12 +62,8 @@ public:
     int coord;
     stripe* sig;
 };
-vector<point*> un(vector<rect*> R);
-vector<int> y_set(vector<rect*> R);
 vector<inter*> partition(vector<int> Y);
-vector<int> x_proj(vector<point*> Pts);
-vector<inter*> intervals(vector<int> cors);//Conversion function for x_proj
-vector<stripe*> stripes(vector<rect*> R,rect* f);
+vector<inter*> intervals(vector<int> cors);
 vector<pair<int,int>> getIntUnion(vector<inter*> ss);
 vector<pair<int,int>> getdiffIntervals(vector<inter*> ss,int s,int e);
 vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S);
@@ -79,3 +75,7 @@ void blacken(vector<stripe*> &sp,vector<inter*> &inr);
 vector<stripe*> concat(vector<stripe*> &SL,vector<stripe*> &SR,vector<int> &P,inter* itr);
 void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,vector<int> &P,vector<stripe*> &S);
 void Rectangle_Dac(vector<rect*> &R,vector<stripe*> &S);
+void trans(ctree* node,vector<int> &ptr);
+bool ec(edge* e1,edge* e2);
+double measure(vector<stripe*> &S);
+vector<line_seg*> vert_contour(vector<stripe*> &S);
