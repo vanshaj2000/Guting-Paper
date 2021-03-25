@@ -1,0 +1,45 @@
+<html>
+<head><title> DAA Guting Paper</title> <head>
+<body>
+<h2>General Discussion of the Algorithm</h2>
+<h4>
+    The aim of the algorithm described in the paper is to solve the measure and contour problem for a set of Iso-Rectangles using Divide and Conquer technique.<br>
+    Usually the sweep line technique was used for this but Guting aimed to achieve O(NlogN) time complexity using divide and conquer. The idea is to use seperational<br>
+    representations.We divide the 2-D plane into a set of horizontal stripes and in each divide step, we break this plane into half.For the conquer step, we merge<br> 
+    the 2 sets of stripes by using different functions such as copy, blacken and conact. Finally after the construction of these stripes, from the union of intersecting <br>
+    intervals, we find the contour lines and the measure of the rectangles.
+</h4>
+<h2>Input</h2>
+<img src="outputs/i1.PNG" height="200" width="400"><br><br>
+<h2>Output</h2>
+<img src="outputs/output1.PNG" height="200" width="400"><br><br>
+<h2>Input</h2>
+<img src="outputs/i2.PNG" height="200" width="400"><br><br>
+<h2>Output</h2>
+<img src="outputs/output2.PNG" height="200" width="400"><br><br>
+<h2>Input</h2>
+<img src="outputs/i9.PNG" height="200" width="400"><br><br>
+<h2>Output</h2>
+<img src="outputs/output9.PNG" height="200" width="400"><br><br>
+<h2>Input</h2>
+<img src="outputs/i10.PNG" height="200" width="400"><br><br>
+<h2>Output</h2>
+<img src="outputs/output10.PNG" height="200" width="400"><br><br>
+<h2>Input</h2>
+<img src="outputs/i11.PNG" height="200" width="400"><br><br>
+<h2>Output</h2>
+<img src="outputs/output11.PNG" height="200" width="400"><br><br>
+<h2>Input</h2>
+<img src="outputs/i12.PNG" height="200" width="400"><br><br>
+<h2>Output</h2>
+<img src="outputs/output12.PNG" height="200" width="400"><br><br>
+<h2>Issues in Coding</h2>
+<h4>The research paper was a little difficult to interpret sometimes as it was written in 1984 and somethings were kept very obtuse. Another issue faced was handling segmentation faults<br>
+and memory allocations. Also implementing the different custom data types was also difficult and required keen attention. Another issue faced was handling the case of same x and y coordinates<br>
+for 2 rectangles as this is handled at the end of the paper and only in a text manner without much pseudo code</h4>
+<h2>Timing Analysis for different number of rectangles</h2>
+<img src="Time_Comp.PNG" height="200" width="400"><br><br>
+<h2>References</h2>
+<h4>“Optimal Divide-and-Conquer to Compute Measure and Contour for a Set of Iso-Rectangles” by Ralf Hartmut Guting</h4>
+</body>
+</html>

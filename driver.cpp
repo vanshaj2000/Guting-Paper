@@ -1,16 +1,408 @@
-#include "includes/dtypes.h"
+#include "dtypes.h"
+#include <chrono>
+using namespace std::chrono;
 using namespace std;
 int mini=INT_MIN;
 int maxi=INT_MAX;
+void swap(int* a, int* b)
+{
+    /**
+     * T(n)=O(1)
+     */
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+int partition (int arr[], int low, int high)
+{
+    /**
+     * T(n)=O(n)
+     */
+    int pivot = arr[high];
+    int i = (low - 1);
+ 
+    for (int j = low; j <= high- 1; j++)
+    {
+        if (arr[j] <= pivot)
+        {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+void quickSort(int arr[], int low, int high)
+{
+    /**
+     * T(n)=O(nlogn)
+     */
+    if (low < high)
+    {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+void merge(int arr[], int l, int m, int r)
+{
+    /**
+     * T(n)=O(n)
+     */
+    int n1 = m - l + 1;
+    int n2 = r - m;
+    int L[n1], R[n2];
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+    int i = 0;
+    int j = 0;
+    int k = l;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+void mergeSort(int arr[],int l,int r)
+{
+    /**
+     * T(n)=O(nlogn)
+     */
+    if(l>=r){
+        return;
+    }
+    int m =l+ (r-l)/2;
+    mergeSort(arr,l,m);
+    mergeSort(arr,m+1,r);
+    merge(arr,l,m,r);
+}
+void printArray(int A[], int size)
+{
+    /**
+     * T(n)=O(n)
+     */
+    for (int i = 0; i < size; i++)
+        cout << A[i] << " ";
+}
+
 bool ec(edge* e1,edge* e2)//Comparator for sorting the vertical edges to handle multiple x coordinates case
 {
+    /**
+     * T(n)=O(1)
+     */
+    /**
+     * Comparator for sorting the vertical edges to handle multiple x coordinates case
+     */
     if(e1->coor!=e2->coor)
         return e1->coor<e2->coor;
     else
         return e1->etype<e2->etype;
 }
+vector<point*> ptUnion(vector<point*> t1,vector<point*> t2)
+{
+    /**
+     * T(n)=O(n^2)
+     */
+    vector<point*> ans=t1;
+    for(int i=0;i<t2.size();i++)
+    {
+        int flag=0;
+        for(int j=0;j<t1.size();j++)
+        {
+            if(t2[i]->x==t1[j]->x&&t2[i]->y==t1[j]->y)
+                flag=1;
+        }
+        if(!flag)
+            ans.push_back(t2[i]);
+    }
+    return ans;
+}
+vector<point*> ptIntersection(vector<point*> t1,vector<point*> t2)
+{
+    /**
+     * T(n)=O(n^2)
+     */
+    vector<point*> ans;
+    for(int i=0;i<t2.size();i++)
+    {
+        int flag=0;
+        for(int j=0;j<t1.size();j++)
+        {
+            if(t2[i]->x==t1[j]->x&&t2[i]->y==t1[j]->y)
+                flag=1;
+        }
+        if(flag)
+            ans.push_back(t2[i]);
+    }
+    return ans;
+}
+vector<int> setCon(set<int> &s)
+{
+    /**
+     * T(n)=O(n)
+     */
+    vector<int> res;
+    for(auto it=s.begin();it!=s.end();it++)
+        res.push_back(*it);
+    return res;
+}
+vector<point*> un(vector<rect*> R)
+{
+    /**
+     * T(n)=O(n)
+     */
+    set<pair<int,int>> s;
+    for(int i=0;i<R.size();i++)
+    {
+        rect* temp=R[i];
+        inter* x=temp->x_int;
+        inter* y=temp->y_int;
+        vector<int> v1={x->top,x->bottom};
+        vector<int> v2={y->top,y->bottom};
+        for(int a=0;a<2;a++)
+        {
+            for(int b=0;b<2;b++)
+                s.insert({v1[a],v2[b]});
+        }
+    }
+    vector<point*> ans;
+    for(auto it=s.begin();it!=s.end();it++)
+    {
+        point* obj=new point();
+        obj->x=it->first;
+        obj->y=it->second;
+        ans.push_back(obj);
+    }
+    return ans;
+}
+vector<int> y_set(vector<rect*> R)
+{
+    /**
+     * T(n)=O(n)
+     */
+    set<int> s;
+    for(int i=0;i<R.size();i++)
+    {
+        s.insert(R[i]->y_int->top);
+        s.insert(R[i]->y_int->bottom);
+    }
+    return setCon(s);
+}
+vector<int> x_proj(vector<point*> Pts)
+{
+    /**
+     * T(n)=O(n)
+     */
+    vector<int> arr1;
+    for(int i=0;i<Pts.size();i++)
+    {
+        int xx=Pts[i]->x;
+        int yy=Pts[i]->y;
+        arr1.push_back(xx);
+        arr1.push_back(yy);
+    }
+    if(arr1.size()==0)
+    {
+        vector<inter*> v1=partition(arr1);
+        vector<inter*> v2=partition(arr1);
+        vector<pair<int,int>> pr1=getIntUnion(v1);
+        vector<pair<int,int>> pr2=getIntUnion(v2);
+        vector<pair<int,int>> res;
+        vector<inter*> ans;
+        for(int i=0;i<pr1.size();i++)
+        {
+            pair<int,int> temp=pr1[i];
+            for(int j=0;j<pr2.size();j++)
+            {
+                pair<int,int> t2=pr2[j];
+                if(temp.first<=t2.second&&temp.first>=t2.first)
+                {
+                    if(temp.second<=t2.second)
+                    {
+                        if(temp.first!=temp.second)
+                            res.push_back(temp);
+                        break;
+                    }
+                    else
+                    {
+                        if(temp.first!=t2.second)
+                            res.push_back({temp.first,t2.second});
+                        temp={t2.second,temp.second};
+                    }
+                }
+                else if(temp.first<t2.first&&temp.second>t2.first)
+                {
+                    if(temp.second>t2.second)
+                    {
+                        if(t2.first!=t2.second)
+                            res.push_back(t2);
+                        temp={t2.second,temp.second};
+                    }
+                    else
+                    {
+                        if(t2.first!=temp.second)
+                            res.push_back({t2.first,temp.second});
+                        break;
+                    }
+                }
+            }
+        }
+        for(int i=0;i<res.size();i++)
+        {
+            inter* obj=new inter();
+            obj->bottom=min(res[i].first,res[i].second);
+            obj->top=max(res[i].first,res[i].second);
+            ans.push_back(obj);
+        }
+    }
+    else if(arr1.size()==1)
+    {
+        vector<inter*> v1=partition(arr1);
+        vector<inter*> v2=partition(arr1);
+        vector<pair<int,int>> pr1=getIntUnion(v1);
+        vector<pair<int,int>> pr2=getIntUnion(v2);
+        vector<pair<int,int>> res;
+        vector<inter*> ans;
+        for(int i=0;i<pr1.size();i++)
+        {
+            pair<int,int> temp=pr1[i];
+            int flag=0;
+            for(int j=0;j<pr2.size();j++)
+            {
+                pair<int,int> t2=pr2[j];
+                if(temp.first>=t2.first&&temp.first<=t2.second)
+                {
+                    if(temp.second<=t2.second)
+                    {
+                        flag++;
+                        break;
+                    }
+                    else
+                        temp={t2.second,temp.second};
+                }
+                else if(temp.first<t2.first)
+                {
+                    if(temp.second<t2.first)
+                        break;
+                    else
+                    {
+                        if(temp.second>t2.second)
+                        {
+                            if(temp.first!=t2.first)
+                                res.push_back({temp.first,t2.first});
+                            temp={t2.second,temp.second};
+                        }
+                        else
+                        {
+                            temp={temp.first,t2.first};
+                            break;
+                        }
+                    }
+                }
+            }
+            if(!flag)
+            {
+                if(temp.first!=temp.second)
+                    res.push_back(temp);
+            }
+        }
+        for(int i=0;i<res.size();i++)
+        {
+            inter* obj=new inter();
+            obj->bottom=min(res[i].first,res[i].second);
+            obj->top=max(res[i].first,res[i].second);
+            ans.push_back(obj);
+        }
+    }
+    else
+    {
+        vector<inter*> v1=partition(arr1);
+        vector<inter*> v2=partition(arr1);
+        vector<pair<int,int>> pr1=getIntUnion(v1);
+        vector<pair<int,int>> pr2=getIntUnion(v2);
+        vector<pair<int,int>> res;
+        vector<inter*> ans;
+        for(int i=0;i<pr1.size();i++)
+        {
+            pair<int,int> temp=pr1[i];
+            int flag=0;
+            for(int j=0;j<pr2.size();j++)
+            {
+                pair<int,int> t2=pr2[j];
+                if(temp.first>=t2.first&&temp.first<=t2.second)
+                {
+                    if(temp.second<=t2.second)
+                    {
+                        flag++;
+                        break;
+                    }
+                    else
+                        temp={t2.second,temp.second};
+                }
+                else if(temp.first<t2.first)
+                {
+                    if(temp.second<t2.first)
+                        break;
+                    else
+                    {
+                        if(temp.second>t2.second)
+                        {
+                            if(temp.first!=t2.first)
+                                res.push_back({temp.first,t2.first});
+                            temp={t2.second,temp.second};
+                        }
+                        else
+                        {
+                            temp={temp.first,t2.first};
+                            break;
+                        }
+                    }
+                }
+            }
+            if(!flag)
+            {
+                if(temp.first!=temp.second)
+                    res.push_back(temp);
+            }
+        }
+        for(int i=0;i<res.size();i++)
+        {
+            inter* obj=new inter();
+            obj->bottom=min(res[i].first,res[i].second);
+            obj->top=max(res[i].first,res[i].second);
+            ans.push_back(obj);
+        }
+    }
+    return arr1;
+}
 vector<inter*> partition(vector<int> Y)//Function to find the different intervals from an array of coordinates
 {
+    /**
+     * T(n)=O(n)
+     */
+    /**
+     * Function to find the different intervals from an array of coordinates
+     * Sorting the points
+     * Then taking consecutive intervals
+     */
     vector<inter*> res;
     sort(Y.begin(),Y.end());//Sorting the points
     for(int i=0;i<Y.size()-1;i++)//Then taking consecutive intervals
@@ -24,6 +416,12 @@ vector<inter*> partition(vector<int> Y)//Function to find the different interval
 }
 vector<inter*> intervals(vector<int> cors)//Used for getting the suninterval queries where cors are the coordinates of the leaf nodes ofa stripe
 {
+    /**
+     * T(n)=O(n)
+     */
+    /**
+     * Used for getting the suninterval queries where cors are the coordinates of the leaf nodes ofa stripe
+     */
     vector<inter*> ans;
     for(int i=0;i<cors.size();i=i+2)
     {
@@ -36,6 +434,13 @@ vector<inter*> intervals(vector<int> cors)//Used for getting the suninterval que
 }
 vector<pair<int,int>> getIntUnion(vector<inter*> ss)//This function finds the array of intervals without overlapping intervals 
 {
+    /**
+     * T(n)=O(n)
+     */
+    /**
+     * This function finds the array of intervals without overlapping intervals
+     * Sorting acc to starting time
+     */
     if(ss.size()==0)
         return {};
     vector<pair<int,int>> pr;
@@ -60,6 +465,9 @@ vector<pair<int,int>> getIntUnion(vector<inter*> ss)//This function finds the ar
 }
 vector<pair<int,int>> getdiffIntervals(vector<inter*> ss,int s,int e)
 {
+    /**
+     * T(n)=O(n)
+     */
     vector<pair<int,int>> res=getIntUnion(ss);
     vector<pair<int,int>> ans;
     for(int i=0;i<res.size();i++)
@@ -76,6 +484,14 @@ vector<pair<int,int>> getdiffIntervals(vector<inter*> ss,int s,int e)
 }
 void trans(ctree* node,vector<int> &ptr)//Function to find the leaf nodes and store them in an array of ptr
 {
+    /**
+     * T(n)=O(n)
+     */
+    /**
+     * Function to find the leaf nodes and store them in an array of ptr
+     * If tree is empty, return NULL
+     * If its a leaf node then push in the array
+     */
     if(node==NULL)//If tree is empty, return NULL
         return;
     if(node->lson==NULL&&node->rson==NULL)//If its a leaf node then push in the array
@@ -87,6 +503,14 @@ void trans(ctree* node,vector<int> &ptr)//Function to find the leaf nodes and st
 }
 vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S)//This function returns an array of line segments that are the horizontal contour pieces
 {
+    /**
+     * T(n)=O(n)
+     */
+    /**
+     * This function returns an array of line segments that are the horizontal contour pieces
+     * If the edge is a top edge
+     * To get the stripe whose top coincides with the edge
+     */
     vector<line_seg*> ans;
     struct stripe* s;
     if(h->etype==3)//If the edge is a top edge
@@ -113,6 +537,10 @@ vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S)//This function retur
             }
         }
     }
+    /**
+     * If its a bottom edge
+     * To get the stripe whose top coincides with the edge
+     */
     vector<int> pp;
     trans(s->tr,pp);
     if(pp.size()<=1)
@@ -137,6 +565,15 @@ vector<line_seg*> contour_pieces(edge* h,vector<stripe*> S)//This function retur
 }
 vector<line_seg*> vert_contour(vector<stripe*> &S)//This function find the vertical contour pieces
 {
+    /**
+     * T(n)=O(n^2)
+     */
+    /**
+     * This function find the vertical contour pieces
+     * We go to every stripe and its leaf nodes and from every coordinate in it make a line segment above its immediate stripe
+     * store the leaf nodes
+     * Creation of the line segment
+     */
     vector<line_seg*> ans;
     for(int i=0;i<S.size();i++)//We go to every stripe and its leaf nodes and from every coordinate in it make a line segment above its immediate stripe
     {
@@ -158,6 +595,14 @@ vector<line_seg*> vert_contour(vector<stripe*> &S)//This function find the verti
 }
 vector<inter*> interUnion(vector<inter*> v1,vector<inter*> v2)//Finds the union of 2 sets of intervals
 {
+    /**
+     * T(n)=O(n^2)
+     */
+    /**
+     * Finds the union of 2 sets of intervals
+     * Push both of them in a single array
+     * And call the getIntUnion
+     */
     vector<inter*> temp=v1;
     for(int i=0;i<v2.size();i++)
         temp.push_back(v2[i]);//Push both of them in a single array
@@ -174,6 +619,12 @@ vector<inter*> interUnion(vector<inter*> v1,vector<inter*> v2)//Finds the union 
 }
 vector<inter*> interSection(vector<inter*> v1,vector<inter*> v2)//Finds the intersection of 2 sets of intervals
 {
+    /**
+     * T(n)=O(n^2)
+     */
+    /**
+     * Finds the intersection of 2 sets of intervals
+     */
     vector<pair<int,int>> pr1=getIntUnion(v1);
     vector<pair<int,int>> pr2=getIntUnion(v2);
     vector<pair<int,int>> res;
@@ -227,6 +678,12 @@ vector<inter*> interSection(vector<inter*> v1,vector<inter*> v2)//Finds the inte
 }
 vector<inter*> interSetDifference(vector<inter*> v1,vector<inter*> v2)//Finds the set fifference of 2 sets of intervals
 {
+    /**
+     * T(n)=O(n^2)
+     */
+    /**
+     * Finds the set fifference of 2 sets of intervals
+     */
     vector<pair<int,int>> pr1=getIntUnion(v1);
     vector<pair<int,int>> pr2=getIntUnion(v2);
     vector<pair<int,int>> res;
@@ -285,6 +742,13 @@ vector<inter*> interSetDifference(vector<inter*> v1,vector<inter*> v2)//Finds th
 }
 vector<stripe*> cop(vector<stripe*> &sp,vector<int> &P,inter* i1)//This is the copy function descibed in the algorithm
 {
+    /**
+     * T(n)=O(n^2)
+     */
+    /**
+     * This is the copy function descibed in the algorithm
+     * Copy an array of original stripes and make a copy array called ss
+     */
     vector<inter*> pp=partition(P);
     vector<stripe*> ss;
     for(int i=0;i<pp.size();i++)
@@ -310,6 +774,12 @@ vector<stripe*> cop(vector<stripe*> &sp,vector<int> &P,inter* i1)//This is the c
 }
 void blacken(vector<stripe*> &sp,vector<inter*> &inr)//This is the blacken function described in the algorithm
 {
+    /**
+     * T(n)=O(n^2)
+     */
+    /**
+     * This is the blacken function described in the algorithm
+     */
     for(int i=0;i<sp.size();i++)
     {
         for(int j=0;j<inr.size();j++)
@@ -326,6 +796,9 @@ void blacken(vector<stripe*> &sp,vector<inter*> &inr)//This is the blacken funct
 }
 vector<stripe*> concat(vector<stripe*> &SL,vector<stripe*> &SR,vector<int> &P,inter* itr)//This is the concatenation function described in the paper
 {
+    /**
+     * T(n)=O(n^2)
+     */
     vector<stripe*> S;
     vector<inter*> pp=partition(P);
     for(int i=0;i<pp.size();i++)
@@ -354,6 +827,10 @@ vector<stripe*> concat(vector<stripe*> &SL,vector<stripe*> &SR,vector<int> &P,in
         for(int j=0;j<s2->x_uni.size();j++)
             S[i]->x_uni.push_back(s2->x_uni[j]);//F
         S[i]->ms=s1->ms+s2->ms;
+        /**
+         * This is the concatenation function described in the paper
+         * Tree construction
+         */
         if(s1->tr!=NULL&&s2->tr!=NULL)//Tree construction
         {
             ctree* o1=new ctree();
@@ -376,6 +853,12 @@ vector<stripe*> concat(vector<stripe*> &SL,vector<stripe*> &SR,vector<int> &P,in
 }
 void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,vector<int> &P,vector<stripe*> &S)//This is the main function to create stripes
 {
+    /**
+     * T(n)=O(nlogn)
+     */
+    /**
+     * This is the main function to create stripes
+     */
     if(V.size()==1)
     {
         edge* v=V[0];
@@ -484,6 +967,13 @@ void STRIPES(vector<edge*> V,inter* x_ext,vector<inter*> &L,vector<inter*> &R,ve
 }
 void Rectangle_Dac(vector<rect*> &R,vector<stripe*> &S)//This is the main function to call stripes with sending the set of all vertical edges
 {
+    /**
+     * T(n)=O(nlogn)
+     */
+    /**
+     * This is the main function to call stripes with sending the set of all vertical edges
+     * Creation of vertical edges from every rectangle
+     */
     vector<edge*> VRX;
     vector<inter*> L;
     vector<inter*> Ri;
@@ -507,11 +997,18 @@ void Rectangle_Dac(vector<rect*> &R,vector<stripe*> &S)//This is the main functi
     inter* itrTemp=new inter();
     itrTemp->bottom=mini;
     itrTemp->top=maxi;
+    /**
+     * Sorting to handle multiple x coordinates case
+     * Calling stripes
+     */
     sort(VRX.begin(),VRX.end(),ec);//Sorting to handle multiple x coordinates case
     STRIPES(VRX,itrTemp,L,Ri,pts,S);//Calling stripes
 }
 double measure(vector<stripe*> &S)//Function to find the measure
 {
+    /**
+     * Function to find the measure
+     */
     double ans=0;
     for(int i=0;i<S.size();i++)
         ans+=(S[i]->ms)*(S[i]->y_i->top-S[i]->y_i->bottom);
@@ -519,6 +1016,10 @@ double measure(vector<stripe*> &S)//Function to find the measure
 }
 vector<line_seg*> contour_driver(vector<rect*> &R,vector<stripe*> &S)//Driver for finding contour pieces
 {
+    /**
+     * Driver for finding contour pieces
+     * Finding the contour pieces for every horizontal edge
+     */
     vector<line_seg*> meg;
     for(int i=0;i<R.size();i++)
     {
@@ -546,6 +1047,9 @@ int main()
     int n;
     cin>>n;
     vector<rect*> R;
+    /**
+     * Input of rectangle coordinates as x_l x_r y_b y_t
+     */
     for(int i=0;i<n;i++)//Input of rectangle coordinates as x_l x_r y_b y_t
     {
         rect* obj=new rect();
@@ -565,13 +1069,29 @@ int main()
         R.push_back(obj);
     }
     vector<stripe*> S;
+    auto start = high_resolution_clock::now();
     Rectangle_Dac(R,S);
+    /**
+     * Oftreams for visualisations through python
+     * Finding horizontal contours
+     * Finding vertical contours
+     * Oftreams for visualisations through python
+     * Oftreams for visualisations through python
+     * Writing rectangle coordinates
+     * Writing horizontal contour pieces coordinates
+     * Writing vertical contour pieces coordinates
+     */
     ofstream msr;//Oftreams for visualisations through python
     msr.open("msr.txt");
     msr<<measure(S)<<endl;
     msr.close();
     vector<line_seg*> lsg=contour_driver(R,S);//Finding horizontal contours
     vector<line_seg*> lvert=vert_contour(S);//Finding vertical contours
+    auto stop = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>(stop - start);
+
+    cout<<"Time taken by function: "<<duration.count()<<" microseconds"<<endl;
     double csum=0;
     ofstream os;//Oftreams for visualisations through python
     os.open("otp.txt");

@@ -1,0 +1,199 @@
+\hypertarget{dtypes_8h}{}\doxysection{C\+:/\+Users/vansh/\+Desktop/\+Assignments/\+DAA/\+Guting-\/\+Paper/dtypes.h File Reference}
+\label{dtypes_8h}\index{C:/Users/vansh/Desktop/Assignments/DAA/Guting-\/Paper/dtypes.h@{C:/Users/vansh/Desktop/Assignments/DAA/Guting-\/Paper/dtypes.h}}
+{\ttfamily \#include $<$bits/stdc++.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classpoint}{point}}
+\item 
+class \mbox{\hyperlink{classinter}{inter}}
+\item 
+class \mbox{\hyperlink{classrect}{rect}}
+\item 
+class \mbox{\hyperlink{classedge}{edge}}
+\item 
+class \mbox{\hyperlink{classlru}{lru}}
+\item 
+class \mbox{\hyperlink{classctree}{ctree}}
+\item 
+class \mbox{\hyperlink{classstripe}{stripe}}
+\item 
+class \mbox{\hyperlink{classline__seg}{line\+\_\+seg}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \mbox{\hyperlink{dtypes_8h_ad48f4f76c146851d83bf8b0454663106}{partition}} (vector$<$ int $>$ Y)
+\item 
+vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \mbox{\hyperlink{dtypes_8h_a820f7e4a124e7c93d1f2c91676987297}{intervals}} (vector$<$ int $>$ cors)
+\item 
+vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{dtypes_8h_a68db017a13cce1523d4fb9ca9a6420b0}{get\+Int\+Union}} (vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ ss)
+\item 
+vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{dtypes_8h_ac9268c97929acd872f6274046ba8803f}{getdiff\+Intervals}} (vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ ss, int s, int e)
+\item 
+vector$<$ \mbox{\hyperlink{classline__seg}{line\+\_\+seg}} $\ast$ $>$ \mbox{\hyperlink{dtypes_8h_a322edbda0ed660accf48c324e750bdee}{contour\+\_\+pieces}} (\mbox{\hyperlink{classedge}{edge}} $\ast$h, vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ S)
+\item 
+vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \mbox{\hyperlink{dtypes_8h_a34953fbbe18d4d0a05d5ff8ed830c8f5}{inter\+Union}} (vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ v1, vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ v2)
+\item 
+vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \mbox{\hyperlink{dtypes_8h_abec8e56033c4f206337fc21986967f8d}{inter\+Section}} (vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ v1, vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ v2)
+\item 
+vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \mbox{\hyperlink{dtypes_8h_a12e9cb661813fee14db6b4ea37c3f214}{inter\+Set\+Difference}} (vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ v1, vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ v2)
+\item 
+vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \mbox{\hyperlink{dtypes_8h_a7c9587b40501998e4bad2c555860c0a3}{cop}} (vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&sp, vector$<$ int $>$ \&P, \mbox{\hyperlink{classinter}{inter}} $\ast$i1)
+\item 
+void \mbox{\hyperlink{dtypes_8h_a57bd267b5e530ea37da81ff5d87d6a1b}{blacken}} (vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&sp, vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \&inr)
+\item 
+vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \mbox{\hyperlink{dtypes_8h_ae5454c26d79c72bcc262be5abd213d53}{concat}} (vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&SL, vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&SR, vector$<$ int $>$ \&P, \mbox{\hyperlink{classinter}{inter}} $\ast$itr)
+\item 
+void \mbox{\hyperlink{dtypes_8h_a18498b14106534266d9fb55e95a383b5}{STRIPES}} (vector$<$ \mbox{\hyperlink{classedge}{edge}} $\ast$ $>$ V, \mbox{\hyperlink{classinter}{inter}} $\ast$x\+\_\+ext, vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \&L, vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \&R, vector$<$ int $>$ \&P, vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&S)
+\item 
+void \mbox{\hyperlink{dtypes_8h_ae82587693963c0df40577a9287cdf797}{Rectangle\+\_\+\+Dac}} (vector$<$ \mbox{\hyperlink{classrect}{rect}} $\ast$ $>$ \&R, vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&S)
+\item 
+void \mbox{\hyperlink{dtypes_8h_adb7b7bfb7c0207308f4d2b0c5716a9e5}{trans}} (\mbox{\hyperlink{classctree}{ctree}} $\ast$node, vector$<$ int $>$ \&ptr)
+\item 
+bool \mbox{\hyperlink{dtypes_8h_a2fdc502a2607129e7cc409928712edc5}{ec}} (\mbox{\hyperlink{classedge}{edge}} $\ast$e1, \mbox{\hyperlink{classedge}{edge}} $\ast$e2)
+\item 
+double \mbox{\hyperlink{dtypes_8h_a398d0067de6e8e7f037774a8bf5773da}{measure}} (vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&S)
+\item 
+vector$<$ \mbox{\hyperlink{classline__seg}{line\+\_\+seg}} $\ast$ $>$ \mbox{\hyperlink{dtypes_8h_ad1b0b8fb31e36a2b04acc43c4f0021bb}{vert\+\_\+contour}} (vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&S)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{dtypes_8h_a57bd267b5e530ea37da81ff5d87d6a1b}\label{dtypes_8h_a57bd267b5e530ea37da81ff5d87d6a1b}} 
+\index{dtypes.h@{dtypes.h}!blacken@{blacken}}
+\index{blacken@{blacken}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{blacken()}{blacken()}}
+{\footnotesize\ttfamily void blacken (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{sp,  }\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \&}]{inr }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+This is the blacken function described in the algorithm\mbox{\Hypertarget{dtypes_8h_ae5454c26d79c72bcc262be5abd213d53}\label{dtypes_8h_ae5454c26d79c72bcc262be5abd213d53}} 
+\index{dtypes.h@{dtypes.h}!concat@{concat}}
+\index{concat@{concat}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{concat()}{concat()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classstripe}{stripe}}$\ast$$>$ concat (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{SL,  }\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{SR,  }\item[{vector$<$ int $>$ \&}]{P,  }\item[{\mbox{\hyperlink{classinter}{inter}} $\ast$}]{itr }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+This is the concatenation function described in the paper Tree construction\mbox{\Hypertarget{dtypes_8h_a322edbda0ed660accf48c324e750bdee}\label{dtypes_8h_a322edbda0ed660accf48c324e750bdee}} 
+\index{dtypes.h@{dtypes.h}!contour\_pieces@{contour\_pieces}}
+\index{contour\_pieces@{contour\_pieces}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{contour\_pieces()}{contour\_pieces()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classline__seg}{line\+\_\+seg}}$\ast$$>$ contour\+\_\+pieces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classedge}{edge}} $\ast$}]{h,  }\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$}]{S }\end{DoxyParamCaption})}
+
+T(n)=O(n)
+
+This function returns an array of line segments that are the horizontal contour pieces If the edge is a top edge To get the stripe whose top coincides with the edge
+
+If its a bottom edge To get the stripe whose top coincides with the edge\mbox{\Hypertarget{dtypes_8h_a7c9587b40501998e4bad2c555860c0a3}\label{dtypes_8h_a7c9587b40501998e4bad2c555860c0a3}} 
+\index{dtypes.h@{dtypes.h}!cop@{cop}}
+\index{cop@{cop}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{cop()}{cop()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classstripe}{stripe}}$\ast$$>$ cop (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{sp,  }\item[{vector$<$ int $>$ \&}]{P,  }\item[{\mbox{\hyperlink{classinter}{inter}} $\ast$}]{i1 }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+This is the copy function descibed in the algorithm Copy an array of original stripes and make a copy array called ss\mbox{\Hypertarget{dtypes_8h_a2fdc502a2607129e7cc409928712edc5}\label{dtypes_8h_a2fdc502a2607129e7cc409928712edc5}} 
+\index{dtypes.h@{dtypes.h}!ec@{ec}}
+\index{ec@{ec}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{ec()}{ec()}}
+{\footnotesize\ttfamily bool ec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classedge}{edge}} $\ast$}]{e1,  }\item[{\mbox{\hyperlink{classedge}{edge}} $\ast$}]{e2 }\end{DoxyParamCaption})}
+
+T(n)=O(1)
+
+Comparator for sorting the vertical edges to handle multiple x coordinates case\mbox{\Hypertarget{dtypes_8h_ac9268c97929acd872f6274046ba8803f}\label{dtypes_8h_ac9268c97929acd872f6274046ba8803f}} 
+\index{dtypes.h@{dtypes.h}!getdiffIntervals@{getdiffIntervals}}
+\index{getdiffIntervals@{getdiffIntervals}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{getdiffIntervals()}{getdiffIntervals()}}
+{\footnotesize\ttfamily vector$<$pair$<$int,int$>$ $>$ getdiff\+Intervals (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{ss,  }\item[{int}]{s,  }\item[{int}]{e }\end{DoxyParamCaption})}
+
+T(n)=O(n)\mbox{\Hypertarget{dtypes_8h_a68db017a13cce1523d4fb9ca9a6420b0}\label{dtypes_8h_a68db017a13cce1523d4fb9ca9a6420b0}} 
+\index{dtypes.h@{dtypes.h}!getIntUnion@{getIntUnion}}
+\index{getIntUnion@{getIntUnion}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{getIntUnion()}{getIntUnion()}}
+{\footnotesize\ttfamily vector$<$pair$<$int,int$>$ $>$ get\+Int\+Union (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{ss }\end{DoxyParamCaption})}
+
+T(n)=O(n)
+
+This function finds the array of intervals without overlapping intervals Sorting acc to starting time\mbox{\Hypertarget{dtypes_8h_abec8e56033c4f206337fc21986967f8d}\label{dtypes_8h_abec8e56033c4f206337fc21986967f8d}} 
+\index{dtypes.h@{dtypes.h}!interSection@{interSection}}
+\index{interSection@{interSection}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{interSection()}{interSection()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classinter}{inter}}$\ast$$>$ inter\+Section (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{v1,  }\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{v2 }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+Finds the intersection of 2 sets of intervals\mbox{\Hypertarget{dtypes_8h_a12e9cb661813fee14db6b4ea37c3f214}\label{dtypes_8h_a12e9cb661813fee14db6b4ea37c3f214}} 
+\index{dtypes.h@{dtypes.h}!interSetDifference@{interSetDifference}}
+\index{interSetDifference@{interSetDifference}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{interSetDifference()}{interSetDifference()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classinter}{inter}}$\ast$$>$ inter\+Set\+Difference (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{v1,  }\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{v2 }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+Finds the set fifference of 2 sets of intervals\mbox{\Hypertarget{dtypes_8h_a34953fbbe18d4d0a05d5ff8ed830c8f5}\label{dtypes_8h_a34953fbbe18d4d0a05d5ff8ed830c8f5}} 
+\index{dtypes.h@{dtypes.h}!interUnion@{interUnion}}
+\index{interUnion@{interUnion}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{interUnion()}{interUnion()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classinter}{inter}}$\ast$$>$ inter\+Union (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{v1,  }\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{v2 }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+Finds the union of 2 sets of intervals Push both of them in a single array And call the get\+Int\+Union\mbox{\Hypertarget{dtypes_8h_a820f7e4a124e7c93d1f2c91676987297}\label{dtypes_8h_a820f7e4a124e7c93d1f2c91676987297}} 
+\index{dtypes.h@{dtypes.h}!intervals@{intervals}}
+\index{intervals@{intervals}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{intervals()}{intervals()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classinter}{inter}}$\ast$$>$ intervals (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{cors }\end{DoxyParamCaption})}
+
+T(n)=O(n)
+
+Used for getting the suninterval queries where cors are the coordinates of the leaf nodes ofa stripe\mbox{\Hypertarget{dtypes_8h_a398d0067de6e8e7f037774a8bf5773da}\label{dtypes_8h_a398d0067de6e8e7f037774a8bf5773da}} 
+\index{dtypes.h@{dtypes.h}!measure@{measure}}
+\index{measure@{measure}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{measure()}{measure()}}
+{\footnotesize\ttfamily double measure (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{S }\end{DoxyParamCaption})}
+
+Function to find the measure\mbox{\Hypertarget{dtypes_8h_ad48f4f76c146851d83bf8b0454663106}\label{dtypes_8h_ad48f4f76c146851d83bf8b0454663106}} 
+\index{dtypes.h@{dtypes.h}!partition@{partition}}
+\index{partition@{partition}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{partition()}{partition()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classinter}{inter}}$\ast$$>$ partition (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{Y }\end{DoxyParamCaption})}
+
+T(n)=O(n)
+
+Function to find the different intervals from an array of coordinates Sorting the points Then taking consecutive intervals\mbox{\Hypertarget{dtypes_8h_ae82587693963c0df40577a9287cdf797}\label{dtypes_8h_ae82587693963c0df40577a9287cdf797}} 
+\index{dtypes.h@{dtypes.h}!Rectangle\_Dac@{Rectangle\_Dac}}
+\index{Rectangle\_Dac@{Rectangle\_Dac}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{Rectangle\_Dac()}{Rectangle\_Dac()}}
+{\footnotesize\ttfamily void Rectangle\+\_\+\+Dac (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classrect}{rect}} $\ast$ $>$ \&}]{R,  }\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{S }\end{DoxyParamCaption})}
+
+T(n)=O(nlogn)
+
+This is the main function to call stripes with sending the set of all vertical edges Creation of vertical edges from every rectangle
+
+Sorting to handle multiple x coordinates case Calling stripes\mbox{\Hypertarget{dtypes_8h_a18498b14106534266d9fb55e95a383b5}\label{dtypes_8h_a18498b14106534266d9fb55e95a383b5}} 
+\index{dtypes.h@{dtypes.h}!STRIPES@{STRIPES}}
+\index{STRIPES@{STRIPES}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{STRIPES()}{STRIPES()}}
+{\footnotesize\ttfamily void STRIPES (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classedge}{edge}} $\ast$ $>$}]{V,  }\item[{\mbox{\hyperlink{classinter}{inter}} $\ast$}]{x\+\_\+ext,  }\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \&}]{L,  }\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \&}]{R,  }\item[{vector$<$ int $>$ \&}]{P,  }\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{S }\end{DoxyParamCaption})}
+
+T(n)=O(nlogn)
+
+This is the main function to create stripes\mbox{\Hypertarget{dtypes_8h_adb7b7bfb7c0207308f4d2b0c5716a9e5}\label{dtypes_8h_adb7b7bfb7c0207308f4d2b0c5716a9e5}} 
+\index{dtypes.h@{dtypes.h}!trans@{trans}}
+\index{trans@{trans}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{trans()}{trans()}}
+{\footnotesize\ttfamily void trans (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classctree}{ctree}} $\ast$}]{node,  }\item[{vector$<$ int $>$ \&}]{ptr }\end{DoxyParamCaption})}
+
+T(n)=O(n)
+
+Function to find the leaf nodes and store them in an array of ptr If tree is empty, return NULL If its a leaf node then push in the array\mbox{\Hypertarget{dtypes_8h_ad1b0b8fb31e36a2b04acc43c4f0021bb}\label{dtypes_8h_ad1b0b8fb31e36a2b04acc43c4f0021bb}} 
+\index{dtypes.h@{dtypes.h}!vert\_contour@{vert\_contour}}
+\index{vert\_contour@{vert\_contour}!dtypes.h@{dtypes.h}}
+\doxysubsubsection{\texorpdfstring{vert\_contour()}{vert\_contour()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classline__seg}{line\+\_\+seg}}$\ast$$>$ vert\+\_\+contour (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{S }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+This function find the vertical contour pieces We go to every stripe and its leaf nodes and from every coordinate in it make a line segment above its immediate stripe store the leaf nodes Creation of the line segment

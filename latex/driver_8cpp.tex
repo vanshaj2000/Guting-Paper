@@ -1,0 +1,316 @@
+\hypertarget{driver_8cpp}{}\doxysection{C\+:/\+Users/vansh/\+Desktop/\+Assignments/\+DAA/\+Guting-\/\+Paper/driver.cpp File Reference}
+\label{driver_8cpp}\index{C:/Users/vansh/Desktop/Assignments/DAA/Guting-\/Paper/driver.cpp@{C:/Users/vansh/Desktop/Assignments/DAA/Guting-\/Paper/driver.cpp}}
+{\ttfamily \#include \char`\"{}dtypes.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{driver_8cpp_a4b9708d87be7a409eff20e5e7e8b43c8}{swap}} (int $\ast$a, int $\ast$b)
+\item 
+int \mbox{\hyperlink{driver_8cpp_a2f0658d814c1e14b49d419add95c79b9}{partition}} (int arr\mbox{[}$\,$\mbox{]}, int low, int high)
+\item 
+void \mbox{\hyperlink{driver_8cpp_a6deda3bd254bf5da0c533d0a02b81922}{quick\+Sort}} (int arr\mbox{[}$\,$\mbox{]}, int low, int high)
+\item 
+void \mbox{\hyperlink{driver_8cpp_a1b703568da022857dac7d63a1e4df325}{merge}} (int arr\mbox{[}$\,$\mbox{]}, int l, int m, int r)
+\item 
+void \mbox{\hyperlink{driver_8cpp_a05c7f4558a138717d51eae08e670cf9b}{merge\+Sort}} (int arr\mbox{[}$\,$\mbox{]}, int l, int r)
+\item 
+void \mbox{\hyperlink{driver_8cpp_a850f422396c9a081cb0226ddff0ea1e1}{print\+Array}} (int A\mbox{[}$\,$\mbox{]}, int size)
+\item 
+bool \mbox{\hyperlink{driver_8cpp_a2fdc502a2607129e7cc409928712edc5}{ec}} (\mbox{\hyperlink{classedge}{edge}} $\ast$e1, \mbox{\hyperlink{classedge}{edge}} $\ast$e2)
+\item 
+vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_a725fa857f5ec6f101c512151eab4bb04}{pt\+Union}} (vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$ t1, vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$ t2)
+\item 
+vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_ad1c45e6be2c000e57b08f9411c3072bb}{pt\+Intersection}} (vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$ t1, vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$ t2)
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{driver_8cpp_a852971c4592f23ba895f92961c745602}{set\+Con}} (set$<$ int $>$ \&s)
+\item 
+vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_ab5f0a2258783ec37ca7fab8e27f0fb10}{un}} (vector$<$ \mbox{\hyperlink{classrect}{rect}} $\ast$ $>$ R)
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{driver_8cpp_af515dd7f44d9cb76af163e59391e627f}{y\+\_\+set}} (vector$<$ \mbox{\hyperlink{classrect}{rect}} $\ast$ $>$ R)
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{driver_8cpp_a0fa44b49c16577b41f162c90a618b4b0}{x\+\_\+proj}} (vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$ Pts)
+\item 
+vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_ad48f4f76c146851d83bf8b0454663106}{partition}} (vector$<$ int $>$ Y)
+\item 
+vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_a820f7e4a124e7c93d1f2c91676987297}{intervals}} (vector$<$ int $>$ cors)
+\item 
+vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{driver_8cpp_a68db017a13cce1523d4fb9ca9a6420b0}{get\+Int\+Union}} (vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ ss)
+\item 
+vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{driver_8cpp_ac9268c97929acd872f6274046ba8803f}{getdiff\+Intervals}} (vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ ss, int s, int e)
+\item 
+void \mbox{\hyperlink{driver_8cpp_adb7b7bfb7c0207308f4d2b0c5716a9e5}{trans}} (\mbox{\hyperlink{classctree}{ctree}} $\ast$node, vector$<$ int $>$ \&ptr)
+\item 
+vector$<$ \mbox{\hyperlink{classline__seg}{line\+\_\+seg}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_a322edbda0ed660accf48c324e750bdee}{contour\+\_\+pieces}} (\mbox{\hyperlink{classedge}{edge}} $\ast$h, vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ S)
+\item 
+vector$<$ \mbox{\hyperlink{classline__seg}{line\+\_\+seg}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_ad1b0b8fb31e36a2b04acc43c4f0021bb}{vert\+\_\+contour}} (vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&S)
+\item 
+vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_a34953fbbe18d4d0a05d5ff8ed830c8f5}{inter\+Union}} (vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ v1, vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ v2)
+\item 
+vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_abec8e56033c4f206337fc21986967f8d}{inter\+Section}} (vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ v1, vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ v2)
+\item 
+vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_a12e9cb661813fee14db6b4ea37c3f214}{inter\+Set\+Difference}} (vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ v1, vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ v2)
+\item 
+vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_a7c9587b40501998e4bad2c555860c0a3}{cop}} (vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&sp, vector$<$ int $>$ \&P, \mbox{\hyperlink{classinter}{inter}} $\ast$i1)
+\item 
+void \mbox{\hyperlink{driver_8cpp_a57bd267b5e530ea37da81ff5d87d6a1b}{blacken}} (vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&sp, vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \&inr)
+\item 
+vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_ae5454c26d79c72bcc262be5abd213d53}{concat}} (vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&SL, vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&SR, vector$<$ int $>$ \&P, \mbox{\hyperlink{classinter}{inter}} $\ast$itr)
+\item 
+void \mbox{\hyperlink{driver_8cpp_a18498b14106534266d9fb55e95a383b5}{STRIPES}} (vector$<$ \mbox{\hyperlink{classedge}{edge}} $\ast$ $>$ V, \mbox{\hyperlink{classinter}{inter}} $\ast$x\+\_\+ext, vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \&L, vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \&R, vector$<$ int $>$ \&P, vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&S)
+\item 
+void \mbox{\hyperlink{driver_8cpp_ae82587693963c0df40577a9287cdf797}{Rectangle\+\_\+\+Dac}} (vector$<$ \mbox{\hyperlink{classrect}{rect}} $\ast$ $>$ \&R, vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&S)
+\item 
+double \mbox{\hyperlink{driver_8cpp_a398d0067de6e8e7f037774a8bf5773da}{measure}} (vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&S)
+\item 
+vector$<$ \mbox{\hyperlink{classline__seg}{line\+\_\+seg}} $\ast$ $>$ \mbox{\hyperlink{driver_8cpp_a8e5ec6b1edb9602c27bd5d1b0aa71bc5}{contour\+\_\+driver}} (vector$<$ \mbox{\hyperlink{classrect}{rect}} $\ast$ $>$ \&R, vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&S)
+\item 
+int \mbox{\hyperlink{driver_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{driver_8cpp_ae612f94d9137165cbbeab354f62608e6}{mini}} =INT\+\_\+\+MIN
+\item 
+int \mbox{\hyperlink{driver_8cpp_a66459ab9bfae7b5ef2c05a6b117e8a5f}{maxi}} =INT\+\_\+\+MAX
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{driver_8cpp_a57bd267b5e530ea37da81ff5d87d6a1b}\label{driver_8cpp_a57bd267b5e530ea37da81ff5d87d6a1b}} 
+\index{driver.cpp@{driver.cpp}!blacken@{blacken}}
+\index{blacken@{blacken}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{blacken()}{blacken()}}
+{\footnotesize\ttfamily void blacken (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{sp,  }\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \&}]{inr }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+This is the blacken function described in the algorithm\mbox{\Hypertarget{driver_8cpp_ae5454c26d79c72bcc262be5abd213d53}\label{driver_8cpp_ae5454c26d79c72bcc262be5abd213d53}} 
+\index{driver.cpp@{driver.cpp}!concat@{concat}}
+\index{concat@{concat}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{concat()}{concat()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classstripe}{stripe}}$\ast$$>$ concat (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{SL,  }\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{SR,  }\item[{vector$<$ int $>$ \&}]{P,  }\item[{\mbox{\hyperlink{classinter}{inter}} $\ast$}]{itr }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+This is the concatenation function described in the paper Tree construction\mbox{\Hypertarget{driver_8cpp_a8e5ec6b1edb9602c27bd5d1b0aa71bc5}\label{driver_8cpp_a8e5ec6b1edb9602c27bd5d1b0aa71bc5}} 
+\index{driver.cpp@{driver.cpp}!contour\_driver@{contour\_driver}}
+\index{contour\_driver@{contour\_driver}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{contour\_driver()}{contour\_driver()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classline__seg}{line\+\_\+seg}}$\ast$$>$ contour\+\_\+driver (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classrect}{rect}} $\ast$ $>$ \&}]{R,  }\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{S }\end{DoxyParamCaption})}
+
+Driver for finding contour pieces Finding the contour pieces for every horizontal edge\mbox{\Hypertarget{driver_8cpp_a322edbda0ed660accf48c324e750bdee}\label{driver_8cpp_a322edbda0ed660accf48c324e750bdee}} 
+\index{driver.cpp@{driver.cpp}!contour\_pieces@{contour\_pieces}}
+\index{contour\_pieces@{contour\_pieces}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{contour\_pieces()}{contour\_pieces()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classline__seg}{line\+\_\+seg}}$\ast$$>$ contour\+\_\+pieces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classedge}{edge}} $\ast$}]{h,  }\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$}]{S }\end{DoxyParamCaption})}
+
+T(n)=O(n)
+
+This function returns an array of line segments that are the horizontal contour pieces If the edge is a top edge To get the stripe whose top coincides with the edge
+
+If its a bottom edge To get the stripe whose top coincides with the edge\mbox{\Hypertarget{driver_8cpp_a7c9587b40501998e4bad2c555860c0a3}\label{driver_8cpp_a7c9587b40501998e4bad2c555860c0a3}} 
+\index{driver.cpp@{driver.cpp}!cop@{cop}}
+\index{cop@{cop}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{cop()}{cop()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classstripe}{stripe}}$\ast$$>$ cop (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{sp,  }\item[{vector$<$ int $>$ \&}]{P,  }\item[{\mbox{\hyperlink{classinter}{inter}} $\ast$}]{i1 }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+This is the copy function descibed in the algorithm Copy an array of original stripes and make a copy array called ss\mbox{\Hypertarget{driver_8cpp_a2fdc502a2607129e7cc409928712edc5}\label{driver_8cpp_a2fdc502a2607129e7cc409928712edc5}} 
+\index{driver.cpp@{driver.cpp}!ec@{ec}}
+\index{ec@{ec}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{ec()}{ec()}}
+{\footnotesize\ttfamily bool ec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classedge}{edge}} $\ast$}]{e1,  }\item[{\mbox{\hyperlink{classedge}{edge}} $\ast$}]{e2 }\end{DoxyParamCaption})}
+
+T(n)=O(1)
+
+Comparator for sorting the vertical edges to handle multiple x coordinates case\mbox{\Hypertarget{driver_8cpp_ac9268c97929acd872f6274046ba8803f}\label{driver_8cpp_ac9268c97929acd872f6274046ba8803f}} 
+\index{driver.cpp@{driver.cpp}!getdiffIntervals@{getdiffIntervals}}
+\index{getdiffIntervals@{getdiffIntervals}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{getdiffIntervals()}{getdiffIntervals()}}
+{\footnotesize\ttfamily vector$<$pair$<$int,int$>$ $>$ getdiff\+Intervals (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{ss,  }\item[{int}]{s,  }\item[{int}]{e }\end{DoxyParamCaption})}
+
+T(n)=O(n)\mbox{\Hypertarget{driver_8cpp_a68db017a13cce1523d4fb9ca9a6420b0}\label{driver_8cpp_a68db017a13cce1523d4fb9ca9a6420b0}} 
+\index{driver.cpp@{driver.cpp}!getIntUnion@{getIntUnion}}
+\index{getIntUnion@{getIntUnion}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{getIntUnion()}{getIntUnion()}}
+{\footnotesize\ttfamily vector$<$pair$<$int,int$>$ $>$ get\+Int\+Union (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{ss }\end{DoxyParamCaption})}
+
+T(n)=O(n)
+
+This function finds the array of intervals without overlapping intervals Sorting acc to starting time\mbox{\Hypertarget{driver_8cpp_abec8e56033c4f206337fc21986967f8d}\label{driver_8cpp_abec8e56033c4f206337fc21986967f8d}} 
+\index{driver.cpp@{driver.cpp}!interSection@{interSection}}
+\index{interSection@{interSection}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{interSection()}{interSection()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classinter}{inter}}$\ast$$>$ inter\+Section (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{v1,  }\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{v2 }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+Finds the intersection of 2 sets of intervals\mbox{\Hypertarget{driver_8cpp_a12e9cb661813fee14db6b4ea37c3f214}\label{driver_8cpp_a12e9cb661813fee14db6b4ea37c3f214}} 
+\index{driver.cpp@{driver.cpp}!interSetDifference@{interSetDifference}}
+\index{interSetDifference@{interSetDifference}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{interSetDifference()}{interSetDifference()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classinter}{inter}}$\ast$$>$ inter\+Set\+Difference (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{v1,  }\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{v2 }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+Finds the set fifference of 2 sets of intervals\mbox{\Hypertarget{driver_8cpp_a34953fbbe18d4d0a05d5ff8ed830c8f5}\label{driver_8cpp_a34953fbbe18d4d0a05d5ff8ed830c8f5}} 
+\index{driver.cpp@{driver.cpp}!interUnion@{interUnion}}
+\index{interUnion@{interUnion}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{interUnion()}{interUnion()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classinter}{inter}}$\ast$$>$ inter\+Union (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{v1,  }\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$}]{v2 }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+Finds the union of 2 sets of intervals Push both of them in a single array And call the get\+Int\+Union\mbox{\Hypertarget{driver_8cpp_a820f7e4a124e7c93d1f2c91676987297}\label{driver_8cpp_a820f7e4a124e7c93d1f2c91676987297}} 
+\index{driver.cpp@{driver.cpp}!intervals@{intervals}}
+\index{intervals@{intervals}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{intervals()}{intervals()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classinter}{inter}}$\ast$$>$ intervals (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{cors }\end{DoxyParamCaption})}
+
+T(n)=O(n)
+
+Used for getting the suninterval queries where cors are the coordinates of the leaf nodes ofa stripe\mbox{\Hypertarget{driver_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{driver_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{driver.cpp@{driver.cpp}!main@{main}}
+\index{main@{main}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Input of rectangle coordinates as x\+\_\+l x\+\_\+r y\+\_\+b y\+\_\+t
+
+Oftreams for visualisations through python Finding horizontal contours Finding vertical contours Oftreams for visualisations through python Oftreams for visualisations through python Writing rectangle coordinates Writing horizontal contour pieces coordinates Writing vertical contour pieces coordinates\mbox{\Hypertarget{driver_8cpp_a398d0067de6e8e7f037774a8bf5773da}\label{driver_8cpp_a398d0067de6e8e7f037774a8bf5773da}} 
+\index{driver.cpp@{driver.cpp}!measure@{measure}}
+\index{measure@{measure}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{measure()}{measure()}}
+{\footnotesize\ttfamily double measure (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{S }\end{DoxyParamCaption})}
+
+Function to find the measure\mbox{\Hypertarget{driver_8cpp_a1b703568da022857dac7d63a1e4df325}\label{driver_8cpp_a1b703568da022857dac7d63a1e4df325}} 
+\index{driver.cpp@{driver.cpp}!merge@{merge}}
+\index{merge@{merge}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{merge()}{merge()}}
+{\footnotesize\ttfamily void merge (\begin{DoxyParamCaption}\item[{int}]{arr\mbox{[}$\,$\mbox{]},  }\item[{int}]{l,  }\item[{int}]{m,  }\item[{int}]{r }\end{DoxyParamCaption})}
+
+T(n)=O(n)\mbox{\Hypertarget{driver_8cpp_a05c7f4558a138717d51eae08e670cf9b}\label{driver_8cpp_a05c7f4558a138717d51eae08e670cf9b}} 
+\index{driver.cpp@{driver.cpp}!mergeSort@{mergeSort}}
+\index{mergeSort@{mergeSort}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{mergeSort()}{mergeSort()}}
+{\footnotesize\ttfamily void merge\+Sort (\begin{DoxyParamCaption}\item[{int}]{arr\mbox{[}$\,$\mbox{]},  }\item[{int}]{l,  }\item[{int}]{r }\end{DoxyParamCaption})}
+
+T(n)=O(nlogn)\mbox{\Hypertarget{driver_8cpp_a2f0658d814c1e14b49d419add95c79b9}\label{driver_8cpp_a2f0658d814c1e14b49d419add95c79b9}} 
+\index{driver.cpp@{driver.cpp}!partition@{partition}}
+\index{partition@{partition}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{partition()}{partition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int partition (\begin{DoxyParamCaption}\item[{int}]{arr\mbox{[}$\,$\mbox{]},  }\item[{int}]{low,  }\item[{int}]{high }\end{DoxyParamCaption})}
+
+T(n)=O(n)\mbox{\Hypertarget{driver_8cpp_ad48f4f76c146851d83bf8b0454663106}\label{driver_8cpp_ad48f4f76c146851d83bf8b0454663106}} 
+\index{driver.cpp@{driver.cpp}!partition@{partition}}
+\index{partition@{partition}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{partition()}{partition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classinter}{inter}}$\ast$$>$ partition (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{Y }\end{DoxyParamCaption})}
+
+T(n)=O(n)
+
+Function to find the different intervals from an array of coordinates Sorting the points Then taking consecutive intervals\mbox{\Hypertarget{driver_8cpp_a850f422396c9a081cb0226ddff0ea1e1}\label{driver_8cpp_a850f422396c9a081cb0226ddff0ea1e1}} 
+\index{driver.cpp@{driver.cpp}!printArray@{printArray}}
+\index{printArray@{printArray}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{printArray()}{printArray()}}
+{\footnotesize\ttfamily void print\+Array (\begin{DoxyParamCaption}\item[{int}]{A\mbox{[}$\,$\mbox{]},  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+T(n)=O(n)\mbox{\Hypertarget{driver_8cpp_ad1c45e6be2c000e57b08f9411c3072bb}\label{driver_8cpp_ad1c45e6be2c000e57b08f9411c3072bb}} 
+\index{driver.cpp@{driver.cpp}!ptIntersection@{ptIntersection}}
+\index{ptIntersection@{ptIntersection}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{ptIntersection()}{ptIntersection()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classpoint}{point}}$\ast$$>$ pt\+Intersection (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$}]{t1,  }\item[{vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$}]{t2 }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)\mbox{\Hypertarget{driver_8cpp_a725fa857f5ec6f101c512151eab4bb04}\label{driver_8cpp_a725fa857f5ec6f101c512151eab4bb04}} 
+\index{driver.cpp@{driver.cpp}!ptUnion@{ptUnion}}
+\index{ptUnion@{ptUnion}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{ptUnion()}{ptUnion()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classpoint}{point}}$\ast$$>$ pt\+Union (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$}]{t1,  }\item[{vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$}]{t2 }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)\mbox{\Hypertarget{driver_8cpp_a6deda3bd254bf5da0c533d0a02b81922}\label{driver_8cpp_a6deda3bd254bf5da0c533d0a02b81922}} 
+\index{driver.cpp@{driver.cpp}!quickSort@{quickSort}}
+\index{quickSort@{quickSort}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{quickSort()}{quickSort()}}
+{\footnotesize\ttfamily void quick\+Sort (\begin{DoxyParamCaption}\item[{int}]{arr\mbox{[}$\,$\mbox{]},  }\item[{int}]{low,  }\item[{int}]{high }\end{DoxyParamCaption})}
+
+T(n)=O(nlogn)\mbox{\Hypertarget{driver_8cpp_ae82587693963c0df40577a9287cdf797}\label{driver_8cpp_ae82587693963c0df40577a9287cdf797}} 
+\index{driver.cpp@{driver.cpp}!Rectangle\_Dac@{Rectangle\_Dac}}
+\index{Rectangle\_Dac@{Rectangle\_Dac}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{Rectangle\_Dac()}{Rectangle\_Dac()}}
+{\footnotesize\ttfamily void Rectangle\+\_\+\+Dac (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classrect}{rect}} $\ast$ $>$ \&}]{R,  }\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{S }\end{DoxyParamCaption})}
+
+T(n)=O(nlogn)
+
+This is the main function to call stripes with sending the set of all vertical edges Creation of vertical edges from every rectangle
+
+Sorting to handle multiple x coordinates case Calling stripes\mbox{\Hypertarget{driver_8cpp_a852971c4592f23ba895f92961c745602}\label{driver_8cpp_a852971c4592f23ba895f92961c745602}} 
+\index{driver.cpp@{driver.cpp}!setCon@{setCon}}
+\index{setCon@{setCon}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{setCon()}{setCon()}}
+{\footnotesize\ttfamily vector$<$int$>$ set\+Con (\begin{DoxyParamCaption}\item[{set$<$ int $>$ \&}]{s }\end{DoxyParamCaption})}
+
+T(n)=O(n)\mbox{\Hypertarget{driver_8cpp_a18498b14106534266d9fb55e95a383b5}\label{driver_8cpp_a18498b14106534266d9fb55e95a383b5}} 
+\index{driver.cpp@{driver.cpp}!STRIPES@{STRIPES}}
+\index{STRIPES@{STRIPES}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{STRIPES()}{STRIPES()}}
+{\footnotesize\ttfamily void STRIPES (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classedge}{edge}} $\ast$ $>$}]{V,  }\item[{\mbox{\hyperlink{classinter}{inter}} $\ast$}]{x\+\_\+ext,  }\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \&}]{L,  }\item[{vector$<$ \mbox{\hyperlink{classinter}{inter}} $\ast$ $>$ \&}]{R,  }\item[{vector$<$ int $>$ \&}]{P,  }\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{S }\end{DoxyParamCaption})}
+
+T(n)=O(nlogn)
+
+This is the main function to create stripes\mbox{\Hypertarget{driver_8cpp_a4b9708d87be7a409eff20e5e7e8b43c8}\label{driver_8cpp_a4b9708d87be7a409eff20e5e7e8b43c8}} 
+\index{driver.cpp@{driver.cpp}!swap@{swap}}
+\index{swap@{swap}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily void swap (\begin{DoxyParamCaption}\item[{int $\ast$}]{a,  }\item[{int $\ast$}]{b }\end{DoxyParamCaption})}
+
+T(n)=O(1)\mbox{\Hypertarget{driver_8cpp_adb7b7bfb7c0207308f4d2b0c5716a9e5}\label{driver_8cpp_adb7b7bfb7c0207308f4d2b0c5716a9e5}} 
+\index{driver.cpp@{driver.cpp}!trans@{trans}}
+\index{trans@{trans}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{trans()}{trans()}}
+{\footnotesize\ttfamily void trans (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classctree}{ctree}} $\ast$}]{node,  }\item[{vector$<$ int $>$ \&}]{ptr }\end{DoxyParamCaption})}
+
+T(n)=O(n)
+
+Function to find the leaf nodes and store them in an array of ptr If tree is empty, return NULL If its a leaf node then push in the array\mbox{\Hypertarget{driver_8cpp_ab5f0a2258783ec37ca7fab8e27f0fb10}\label{driver_8cpp_ab5f0a2258783ec37ca7fab8e27f0fb10}} 
+\index{driver.cpp@{driver.cpp}!un@{un}}
+\index{un@{un}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{un()}{un()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classpoint}{point}}$\ast$$>$ un (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classrect}{rect}} $\ast$ $>$}]{R }\end{DoxyParamCaption})}
+
+T(n)=O(n)\mbox{\Hypertarget{driver_8cpp_ad1b0b8fb31e36a2b04acc43c4f0021bb}\label{driver_8cpp_ad1b0b8fb31e36a2b04acc43c4f0021bb}} 
+\index{driver.cpp@{driver.cpp}!vert\_contour@{vert\_contour}}
+\index{vert\_contour@{vert\_contour}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{vert\_contour()}{vert\_contour()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classline__seg}{line\+\_\+seg}}$\ast$$>$ vert\+\_\+contour (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classstripe}{stripe}} $\ast$ $>$ \&}]{S }\end{DoxyParamCaption})}
+
+T(n)=O(n$^\wedge$2)
+
+This function find the vertical contour pieces We go to every stripe and its leaf nodes and from every coordinate in it make a line segment above its immediate stripe store the leaf nodes Creation of the line segment\mbox{\Hypertarget{driver_8cpp_a0fa44b49c16577b41f162c90a618b4b0}\label{driver_8cpp_a0fa44b49c16577b41f162c90a618b4b0}} 
+\index{driver.cpp@{driver.cpp}!x\_proj@{x\_proj}}
+\index{x\_proj@{x\_proj}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{x\_proj()}{x\_proj()}}
+{\footnotesize\ttfamily vector$<$int$>$ x\+\_\+proj (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classpoint}{point}} $\ast$ $>$}]{Pts }\end{DoxyParamCaption})}
+
+T(n)=O(n)\mbox{\Hypertarget{driver_8cpp_af515dd7f44d9cb76af163e59391e627f}\label{driver_8cpp_af515dd7f44d9cb76af163e59391e627f}} 
+\index{driver.cpp@{driver.cpp}!y\_set@{y\_set}}
+\index{y\_set@{y\_set}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{y\_set()}{y\_set()}}
+{\footnotesize\ttfamily vector$<$int$>$ y\+\_\+set (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classrect}{rect}} $\ast$ $>$}]{R }\end{DoxyParamCaption})}
+
+T(n)=O(n)
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{driver_8cpp_a66459ab9bfae7b5ef2c05a6b117e8a5f}\label{driver_8cpp_a66459ab9bfae7b5ef2c05a6b117e8a5f}} 
+\index{driver.cpp@{driver.cpp}!maxi@{maxi}}
+\index{maxi@{maxi}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{maxi}{maxi}}
+{\footnotesize\ttfamily int maxi =INT\+\_\+\+MAX}
+
+\mbox{\Hypertarget{driver_8cpp_ae612f94d9137165cbbeab354f62608e6}\label{driver_8cpp_ae612f94d9137165cbbeab354f62608e6}} 
+\index{driver.cpp@{driver.cpp}!mini@{mini}}
+\index{mini@{mini}!driver.cpp@{driver.cpp}}
+\doxysubsubsection{\texorpdfstring{mini}{mini}}
+{\footnotesize\ttfamily int mini =INT\+\_\+\+MIN}
+
