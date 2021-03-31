@@ -28,6 +28,7 @@ public:
 class edge: public inter
 {
 public:
+    int rid;
     inter* x_inter;
     inter* y_inter;
     int coor;
