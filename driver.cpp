@@ -465,14 +465,6 @@ vector<inter*> interSetDifference(vector<inter*> v1,vector<inter*> v2)//Finds th
 }
 vector<pair<inter*,int>> interUnion(vector<pair<inter*,int>> v1,vector<pair<inter*,int>> v2)//Finds the union of 2 sets of intervals
 {
-    /**
-     * T(n)=O(n^2)
-     */
-    /**
-     * Finds the union of 2 sets of intervals
-     * Push both of them in a single array
-     * And call the getIntUnion
-     */
     vector<pair<inter*,int>> temp=v1;
     for(int i=0;i<v2.size();i++)
         temp.push_back(v2[i]);
@@ -498,12 +490,6 @@ vector<pair<inter*,int>> interUnion(vector<pair<inter*,int>> v1,vector<pair<inte
 }
 vector<pair<inter*,int>> interSection(vector<pair<inter*,int>> v1,vector<pair<inter*,int>> v2)//Finds the intersection of 2 sets of intervals
 {
-    /**
-     * T(n)=O(n^2)
-     */
-    /**
-     * Finds the intersection of 2 sets of intervals
-     */
     set<pair<pair<int,int>,int>> temps1;
     for(int i=0;i<v1.size();i++)
     {
@@ -542,12 +528,6 @@ vector<pair<inter*,int>> interSection(vector<pair<inter*,int>> v1,vector<pair<in
 }
 vector<pair<inter*,int>> interSetDifference(vector<pair<inter*,int>> v1,vector<pair<inter*,int>> v2)//Finds the set fifference of 2 sets of intervals
 {
-    /**
-     * T(n)=O(n^2)
-     */
-    /**
-     * Finds the set fifference of 2 sets of intervals
-     */
     set<pair<pair<int,int>,int>> temps1;
     for(int i=0;i<v1.size();i++)
     {
